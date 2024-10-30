@@ -1,0 +1,122 @@
+<div class="d-flex align-items-center justify-content-end" mat-dialog-title>
+    <button class="mat-close-modal" matDialogClose>
+        <i class="fi fi-close font-18"></i>
+    </button>
+</div>
+
+<mat-dialog-content class="h-100 border-0 pt-0 mt-n5" *ngIf="pageLoad">
+    <div class="px-md-4">
+
+
+        <div class="info-section reverse">
+            <div class="info-item ">
+                <span class="name">Logo</span>
+                <div class="img">
+                    <img *ngIf="clientData.clntLogo != null " [src]="imageSrc + clientData.clntLogo" alt="">
+                    <span *ngIf="clientData.clntLogo == null " class="font-21 font-weight-bold text-color-white">
+                        {{clientData?.clntLocalName}}
+                    </span>
+                </div>
+            </div>
+            <div class="info-item">
+                <span class="name">Local Name</span>
+                <span class="disc">{{clientData.clntLocalName}}</span>
+            </div>
+
+
+            <div class="info-item">
+                <span class="name">Foreign Name</span>
+                <span class="disc">{{clientData.clntForeignName}} </span>
+            </div>
+
+
+            <div class="info-item">
+                <span class="name">Local Address </span>
+                <span class="disc">{{clientData.clntLocalAddress}}</span>
+            </div>
+
+
+            <div class="info-item">
+                <span class="name">Foreign Address</span>
+                <span class="disc">{{clientData.clntForeignAddress}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="name">Phone</span>
+                <span class="disc">{{clientData.clntPhones}}</span>
+            </div>
+
+
+            <div class="info-item">
+                <span class="name">Contact Local Name</span>
+                <span class="disc">{{clientData.clntContactLocalName}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="name">Contact Foreign Name</span>
+                <span class="disc">{{clientData.clntContactForeignName}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="name">Contact Phone</span>
+                <span class="disc">{{clientData.clntContactPhone}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="name">Contact Mobile</span>
+                <span class="disc">{{clientData.clntContactMobile}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="name">Number Of employees</span>
+                <span class="disc">{{clientData.clntNoOfEmployees}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="name">Number Of Branches</span>
+                <span class="disc">{{clientData.clntNoOfBranches}}</span>
+            </div>
+
+
+            <div class="info-item">
+                <span class="name">Email</span>
+                <span class="disc">{{clientData.clntContactEmail}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="name">First Weekend</span>
+                <span class="disc">{{clientData.clntWeekEnd}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="name">Second Weekend</span>
+                <span class="disc">{{clientData.clntOtherWeekEnd}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="name">Escalation Days</span>
+                <span class="disc">{{clientData.clntEscalationDays}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="name">Cleansing Days</span>
+                <span class="disc">{{clientData.clntCleansinDays}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="name">Max Running Request</span>
+                <span class="disc">{{clientData.clntMaxRuningRequests}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="name">Delayed Days</span>
+                <span class="disc">{{clientData.clntDelayedDays}}</span>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</mat-dialog-content>

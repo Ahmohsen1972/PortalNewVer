@@ -1,0 +1,74 @@
+<div class="d-flex align-items-center justify-content-end" mat-dialog-title>
+    <button class="mat-close-modal" matDialogClose>
+        <i class="fi fi-close font-18"></i>
+    </button>
+</div>
+
+<mat-dialog-content class="h-100 border-0 pt-0 mt-n5" *ngIf="pageLoad">
+    <div class="px-md-4">
+        <div class="user-info d-flex flex-column flex-md-row justify-content-md-start justify-content-center align-items-center flex-wrap mb-4"
+            *ngIf=false>
+            <button class="btn button-primary font-18 font-weight-semi-bold px-2">
+                <span>
+                    <i class="fi fi-pen"></i>
+
+                    EditInformation
+                </span>
+            </button>
+        </div>
+
+
+
+
+        <div class="info-section reverse">
+            <div class="info-item">
+                <span class="name">Language Local Name</span>
+                <span class="disc">{{languageData.langLocalName}}</span>
+            </div>
+
+
+            <div class="info-item">
+                <span class="name">Language Is Default</span>
+                <span *ngIf="languageData.langIsDefault=='T'">&#10004;</span>
+                <span *ngIf="languageData.langIsDefault=='F'">&#10006;</span>
+            </div>
+
+
+            <div class="info-item">
+                <span class="name">Language Foriegn Name</span>
+                <span class="disc">{{languageData.langForeignName}}</span>
+            </div>
+
+
+            <div class="info-item">
+                <span class="name">Language Display Order</span>
+                <span class="disc">{{languageData.langdisplayOrder}}</span>
+            </div>
+
+
+            <div class="info-item">
+                <span class="name">Language Direction</span>
+                <span class="disc">{{languageData.langDir=='RTL'?'Right To Left':'Left To Right'}}</span>
+            </div>
+
+
+            <div class="info-item">
+                <span class="name">Language Short Name</span>
+                <span class="disc">{{languageData.langsShortName}}</span>
+            </div>
+
+
+            <div class="info-item">
+                <span class="name">System Key</span>
+                <span class="disc">{{languageData.sysKey}}</span>
+            </div>
+
+
+            <div class="info-item">
+                <span class="name">Client Key</span>
+                <span class="disc">{{languageData.clntKey}}</span>
+            </div>
+
+        </div>
+    </div>
+</mat-dialog-content>

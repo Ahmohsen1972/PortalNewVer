@@ -1,0 +1,66 @@
+<form [formGroup]="countryForm" (ngSubmit)="onSubmit()" *ngIf="pageLoad">
+    <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+        <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">Add Country</h3>
+        <button class="mat-close-modal" matDialogClose>
+            <i class="fi fi-close font-18"></i>
+        </button>
+    </div>
+
+    <mat-dialog-content class="h-100 border-top pt-3">
+        <div class="col-12 mb-4" *ngIf="probertyData['wcLocalName']['apsVisible'] == 'T'">
+            <label
+                class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wcLocalName']['ahdCaption']}}</label>
+            <mat-form-field class="primary-form font-17">
+                <mat-label>{{probertyData['wcLocalName']['ahdCaption']}}</mat-label>
+                <label class="mat-form-content">
+                    <input matInput placeholder="{{probertyData['wcLocalName']['ahdCaption']}}"
+                        formControlName="countryLocalName">
+                </label>
+
+            </mat-form-field>
+        </div>
+        <div class="col-12 mb-4" *ngIf="probertyData['wcForeignName']['apsVisible'] == 'T'">
+            <label
+                class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wcForeignName']['ahdCaption']}}</label>
+            <mat-form-field class="primary-form font-17">
+                <mat-label>{{probertyData['wcForeignName']['ahdCaption']}}</mat-label>
+                <label class="mat-form-content">
+                    <input matInput placeholder="{{probertyData['wcForeignName']['ahdCaption']}}"
+                        formControlName="countryForeignName">
+                </label>
+            </mat-form-field>
+        </div>
+        <div class="col-12 mb-4" *ngIf="probertyData['wcrCode']['apsVisible'] == 'T'">
+            <label
+                class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wcrLocalName']['ahdCaption']}}</label>
+            <mat-form-field class="primary-form gray-input font-17">
+                <mat-label>{{probertyData['wcrLocalName']['ahdCaption']}}</mat-label>
+                <mat-icon matPrefix><i class="fi fi-search"></i> </mat-icon>
+                <label class="mat-form-content">
+                    <input type="text" placeholder="{{probertyData['wcrLocalName']['ahdCaption']}}" aria-label="Number"
+                        matInput formControlName="wcrLocalName" [matAutocomplete]="currency">
+                </label>
+                <mat-autocomplete #currency="matAutocomplete" (optionSelected)="onCurrencySelection($event)">
+                    <mat-option *ngFor="let currency of currenciesFilteredOptions | async"
+                        [value]="currency.wcrLocalName">
+                        {{currency.wcrLocalName}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+
+    <div class="d-flex align-items-center justify-content-center">
+        <button type="button" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+            <span>{{staticTranslation['cancel']}}</span>
+        </button>
+        <span class="mx-2"></span>
+        <button type="submit" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose
+            [disabled]="!countryForm.valid">
+            <span>
+                {{staticTranslation['save']}}
+            </span>
+        </button>
+    </div>
+
+</form>

@@ -1,0 +1,108 @@
+
+   <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+     <h2 class="font-33 font-md-24 font-weight-bold text-color-black">Lov Module Setup</h2>
+   </div>
+   
+   
+   <form [formGroup]="lovModuleForm" *ngIf="pageLoad" >
+     <div class="p-3">
+       <div class="row">
+   
+         <!--Update Case-->
+         <div class="col-md-6 mb-3" *ngIf="status!='view' ">
+   
+           <div class="col-12 mb-4">
+             <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Module</label>
+             <mat-form-field class="primary-form font-17">
+               <mat-label>{{status=='Edit'?lovModuleData.modLocalName:'Module'}}</mat-label>
+               <label class="mat-form-content">
+                 <mat-select formControlName="modKey">
+                   <mat-option *ngFor="let data of modNameData" (click)="getModKey(data.modKey)" [value]=data.modKey>{{data.modLocalName}}</mat-option>
+                 </mat-select>
+               </label>
+             </mat-form-field>
+           </div>
+
+           <div class="col-12 mb-4">
+            <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Lov</label>
+            <mat-form-field class="primary-form font-17">
+              <mat-label>{{status=='Edit'?lovModuleData.lovName:'LOV'}}</mat-label>
+              <label class="mat-form-content">
+                <mat-select formControlName="lovKey">
+                  <mat-option *ngFor="let data of lovData"  [value]=data.lovKey>{{data.lovName}}</mat-option>
+                </mat-select>
+              </label>
+            </mat-form-field>
+          </div>
+
+           <div class="col-12 mb-4" *ngIf="dependentLov">
+            <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Module Attributes</label>
+            <mat-form-field class="primary-form font-17">
+              <mat-label>{{status=='Edit'?lovModuleData.maLocalName:'Module Attributes'}}</mat-label>
+              <label class="mat-form-content">
+                <mat-select formControlName="maKey">
+                  <mat-option *ngFor="let data of modAttrData" [value]=data.maKey>{{data.maLocalName}}</mat-option>
+                </mat-select>
+              </label>
+            </mat-form-field>
+          </div>
+  
+   
+           <div class="col-12 mb-4">
+             <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center disabled">Where Condition</label>
+             <mat-form-field class="primary-form font-17">
+               <mat-label>Where Condition</mat-label>
+               <label class="mat-form-content">
+                 <input type="text" matInput placeholder="Where Condition" formControlName="ilmAddedWhereCond"  />
+               </label>
+             </mat-form-field>
+           </div>
+   
+   
+           
+         </div>
+   
+            <!--View Case-->
+         <div class="col-md-6 mb-3" *ngIf="status=='view' ">
+           <div class="info-section reverse" *ngIf="pageLoad">
+             <div class="info-item">
+               <span class="name"> Module</span>
+               <span class="disc">{{lovModuleData?.modLocalName}} </span>
+             </div>
+   
+             <div class="info-item">
+               <span class="name"> Module Attributes</span>
+               <span class="disc">{{lovModuleData?.maLocalName}} </span>
+             </div>
+   
+             <div class="info-item">
+               <span class="name">Where Condition</span>
+               <span class="disc">{{lovModuleData?.ilmAddedWhereCond}} </span>
+             </div>
+   
+           
+   
+          
+   
+   
+           </div>
+         </div>
+       </div>
+     </div>
+   </form>
+   
+      <!--Update Buttons-->
+   <div *ngIf="status!='view' " class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+     <button (click)="resetForm()" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" 
+       matDialogClose>
+       <span>Dismiss</span>
+     </button>
+     <span class="mx-2"></span> 
+     <button (click)="onSubmitModuleInfo()" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3" >
+       <span>
+         {{btnAction}}
+       </span>
+     </button>
+   </div>
+   
+   

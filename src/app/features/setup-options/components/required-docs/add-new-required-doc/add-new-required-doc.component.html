@@ -1,0 +1,66 @@
+<form [formGroup]="requiredDocumentForm" (ngSubmit)="onSubmit()" *ngIf="pageLoad">
+  <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+    <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">{{pageTitle === 'AddRequireDoc'? staticTranslation['add']:staticTranslation['update'] }} {{staticTranslation['RequireDoc']}} </h3>
+    <button class="mat-close-modal" matDialogClose>
+      <i class="fi fi-close font-18"></i>
+    </button>
+  </div>
+
+  <mat-dialog-content class="h-100 border-top pt-3">
+    <div class="col-12 mb-4" *ngIf="probertyData['wrdLocalName']['apsVisible'] == 'T'">
+      <label
+        class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wrdLocalName']['ahdCaption']}}</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{probertyData['wrdLocalName']['ahdCaption']}}</mat-label>
+        <label class="mat-form-content">
+          <input matInput placeholder="{{probertyData['wrdLocalName']['ahdCaption']}}"
+            formControlName="requiredDocumentName">
+        </label>
+
+      </mat-form-field>
+    </div>
+    <div class="col-12 mb-4" *ngIf="probertyData['wrdForeignName']['apsVisible'] == 'T'">
+      <label
+        class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wrdForeignName']['ahdCaption']}}</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{probertyData['wrdForeignName']['ahdCaption']}}</mat-label>
+        <label class="mat-form-content">
+          <input matInput placeholder="{{probertyData['wrdForeignName']['ahdCaption']}}"
+            formControlName="requiredDocumentFName">
+        </label>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mb-4" *ngIf="probertyData['wrdIntegrationCode']['apsVisible'] == 'T'">
+      <label
+        class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wrdIntegrationCode']['ahdCaption']}}</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{probertyData['wrdIntegrationCode']['ahdCaption']}}</mat-label>
+        <label class="mat-form-content">
+          <input matInput placeholder="{{probertyData['wrdIntegrationCode']['ahdCaption']}}"
+            formControlName="wrdIntegrationCode">
+        </label>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 mb-3" *ngIf="probertyData['wrdIsForBp']['apsVisible'] == 'T'">
+      <mat-checkbox [(ngModel)]="wrdIsForBp" [disabled]="probertyData['wrdIsForBp']['apsEnabled']=='F'"
+        [required]="probertyData['wrdIsForBp']['apsRequired']" [ngModelOptions]="{standalone: true}"><span
+          class="font-17 font-weight-semi-bold text-color-black">{{probertyData['wrdIsForBp']['ahdCaption']}}</span>
+      </mat-checkbox>
+    </div>
+  </mat-dialog-content>
+
+  <div class="d-flex align-items-center justify-content-center">
+    <button type="button" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+      <span>{{staticTranslation['cancel']}}</span>
+    </button>
+    <span class="mx-2"></span>
+    <button type="submit" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose
+      [disabled]="!requiredDocumentForm.valid">
+      <span>
+        {{staticTranslation['save']}}
+      </span>
+    </button>
+  </div>
+
+</form>

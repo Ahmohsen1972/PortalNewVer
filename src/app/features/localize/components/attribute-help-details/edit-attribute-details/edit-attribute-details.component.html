@@ -1,0 +1,135 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+    <h2 class="font-33 font-md-24 font-weight-bold text-color-black">Attribute Details</h2>
+</div>
+
+<form [formGroup]="attributeDetailsForm">
+    <div class="p-3">
+        <div class="row">
+
+            <mat-dialog-content class="h-100 border-top pt-3">
+                <div class="col-12 mb-2">
+                    <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Parent Module</label>
+                    <mat-form-field class="primary-form font-17">
+                        <mat-label>Parent Module</mat-label>
+                        <label class="mat-form-content">
+                            <input type="text" matInput placeholder="Parent Module" formControlName="parentModule" />
+                        </label>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 mb-2">
+                    <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center "> Module</label>
+                    <mat-form-field class="primary-form font-17">
+                        <mat-label> Module</mat-label>
+                        <label class="mat-form-content">
+                            <input type="text" matInput placeholder="Parent Module" formControlName="mainModule" />
+                        </label>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 mb-2">
+                    <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Module Attribute</label>
+
+                    <mat-form-field class="primary-form font-17" *ngIf="data.status!='create'">
+                        <mat-label> Module Attribute</mat-label>
+                        <label class="mat-form-content">
+                            <input type="text" matInput placeholder="Module Attribute" formControlName="maLocalName" />
+                        </label>
+                    </mat-form-field>
+
+                    <mat-form-field class="primary-form font-17" *ngIf="data.status=='create'">
+                        <mat-label>Module Attribute</mat-label>
+                        <label class="mat-form-content">
+                            <mat-select formControlName="maKey">
+                                <mat-option *ngFor="let data of modAttributeNameData" [value]=data.maKey>
+                                    {{data.maLocalName}}
+                                </mat-option>
+                            </mat-select>
+                        </label>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 mb-2">
+                    <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center "> Language</label>
+                    <mat-form-field class="primary-form font-17" *ngIf="data.status!='create'">
+                        <mat-label> Language</mat-label>
+                        <label class="mat-form-content">
+                            <input type="text" matInput placeholder=" Language" formControlName="langLocalName" />
+                        </label>
+                    </mat-form-field>
+
+                    <mat-form-field class="primary-form font-17" *ngIf="data.status=='create'">
+                        <mat-label>Language</mat-label>
+                        <label class="mat-form-content">
+                            <mat-select formControlName="langKey">
+                                <mat-option *ngFor="let data of languagesNamesData" [value]=data.langKey>
+                                    {{data.langLocalName}}
+                                </mat-option>
+                            </mat-select>
+                        </label>
+                    </mat-form-field>
+
+
+                </div>
+
+                <div class="col-12 mb-2">
+                    <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Caption</label>
+                    <mat-form-field class="primary-form font-17">
+                        <mat-label>Caption</mat-label>
+                        <label class="mat-form-content">
+                            <input type="text" matInput placeholder="Caption" formControlName="ahdCaption" />
+                        </label>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 mb-2">
+                    <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center "> Help</label>
+                    <mat-form-field class="primary-form font-17">
+                        <mat-label> Help</mat-label>
+                        <label class="mat-form-content">
+                            <input type="text" matInput placeholder=" Help" formControlName="ahdHelp" />
+                        </label>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 mb-2">
+                    <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Tooltip</label>
+                    <mat-form-field class="primary-form font-17">
+                        <mat-label>Tooltip</mat-label>
+                        <label class="mat-form-content">
+                            <input type="text" matInput placeholder="Tooltip" formControlName="ahdTooltip" />
+                        </label>
+                    </mat-form-field>
+                </div>
+
+
+
+
+            </mat-dialog-content>
+
+        </div>
+
+
+
+    </div>
+
+
+</form>
+
+
+<div class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+    <button (click)="resetForm()" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3"
+        matDialogClose>
+        <span>Dismiss</span>
+    </button>
+    <span class="mx-2"></span>
+    <button (click)="onSubmitAttributeDetails()"
+        [disabled]="(attributeDetailsForm.invalid||attributeDetailsForm.untouched)"
+        class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+        <span>
+            {{btnAction}}
+        </span>
+    </button>
+</div>
+
+<!-- </div> -->

@@ -1,0 +1,102 @@
+<form [formGroup]="moduleForm" (ngSubmit)="onSubmit()" *ngIf="pageLoad">
+  <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+    <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">New Module Setup</h3>
+    <button class="mat-close-modal" matDialogClose>
+      <i class="fi fi-close font-18"></i>
+    </button>
+  </div>
+
+  <mat-dialog-content class="h-100 border-top pt-3">
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Role</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{userType==0?'Officer':'Customer'}}</mat-label>
+        <label class="mat-form-content">
+
+          <mat-select formControlName="roleName">
+
+            <mat-option>{{userType==0?'Officer':'Customer'}}</mat-option>
+
+          </mat-select>
+        </label>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Main Module</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Main Module</mat-label>
+        <label class="mat-form-content">
+
+          <mat-select formControlName="modKeyParent">
+
+            <mat-option *ngFor="let data of mainModLocalnameData" (click)="getModKeyParent(data.Code)"
+              [value]=data?.Code>{{data?.Name}}</mat-option>
+
+          </mat-select>
+        </label>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 mb-4" *ngIf="dependentLovModule">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Module</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Module</mat-label>
+        <label class="mat-form-content">
+          <mat-select formControlName="modKey">
+            <mat-option *ngFor="let data of subModuleData" (click)="getModKey(data.modKey)" [value]=data?.modKey>
+              {{data?.moduleLocalName}}</mat-option>
+          </mat-select>
+        </label>
+      </mat-form-field>
+    </div>
+
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Process</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Process</mat-label>
+        <label class="mat-form-content">
+
+          <mat-select formControlName="prcKey">
+
+            <mat-option *ngFor="let data of processNameData" [value]=data?.Code>{{data?.Name}}</mat-option>
+
+          </mat-select>
+        </label>
+      </mat-form-field>
+    </div>
+
+
+    <div class="col-12 mb-4" *ngIf="dependentLovAsOf">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">As Of</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>As Of</mat-label>
+        <label class="mat-form-content">
+          <mat-select formControlName="masKeyAsOf">
+            <mat-option *ngFor="let data of asOfData" [value]=data[0]>{{data[1]}}</mat-option>
+          </mat-select>
+        </label>
+      </mat-form-field>
+    </div>
+
+
+
+  </mat-dialog-content>
+
+  <div class="d-flex align-items-center justify-content-center">
+    <button type="button" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+      <span>Dismiss</span>
+    </button>
+    <span class="mx-2"></span>
+    <button type="submit" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3"
+      [class.disabled]="isDisabled">
+      <span>
+        Save
+      </span>
+    </button>
+  </div>
+</form>

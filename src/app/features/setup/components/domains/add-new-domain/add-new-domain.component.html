@@ -1,0 +1,78 @@
+<!-- <div class="popup-container">
+    <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+      <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">Edit Main information</h3>
+      <button class="mat-close-modal" matDialogClose>
+        <i class="fi fi-close font-18"></i>
+      </button>
+    </div> -->
+  
+   
+  <!--  *ngIf="pageLoad"-->
+  <form [formGroup]="mainInfoForm"*ngIf="pageLoad" >
+    <div class="p-3">
+      <div class="row">
+       <!-- *ngIf="probertyData['wppLFirstName']['apsVisible'] == 'T'" -->
+        <div class="col-md-6 mb-3" >
+          <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Domain Name</label>
+          <mat-form-field class="primary-form font-17">
+          <!--   <mat-label>{{probertyData['wppLFirstName']['ahdCaption']}}</mat-label>-->
+            <label class="mat-form-content">
+              <input formControlName="rvDomain" matInput placeholder="Domain Name" />
+            </label>
+          </mat-form-field>
+        </div>
+
+
+       <!-- *ngIf="probertyData['wppLFirstName']['apsVisible'] == 'T'" -->
+<!-- 
+        <div class="col-md-6 mb-3" >
+          <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">system</label>
+          <mat-form-field class="primary-form font-17">
+            <mat-label>system</mat-label>
+            <label class="mat-form-content">
+              <input formControlName="system" matInput placeholder="system" />
+            </label>
+          </mat-form-field>
+        </div>
+
+                    *ngIf="probertyData['wppLFirstName']['apsVisible'] == 'T'" 
+
+        <div class="col-md-6 mb-3" >
+          <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">clntKey</label>
+          <mat-form-field class="primary-form font-17">
+            <mat-label>clntKey</mat-label>
+            <label class="mat-form-content">
+              <input formControlName="clntKey" matInput placeholder="clntKey" />
+            </label>
+          </mat-form-field>
+        </div>
+
+      -->
+
+
+
+    
+    
+  
+    
+    
+      </div>
+
+    </div>
+  </form>
+ 
+
+  <div class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+    <button (click)="resetForm()" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+      <span>Dismiss</span>
+    </button>
+    <span class="mx-2"></span>
+    <!--[disabled]="mainInfoForm.invalid" -->
+    <button  (click)="onSubmitMainInfo()" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+      <span>
+        Save
+      </span>
+    </button>
+  </div>
+
+<!-- </div> -->

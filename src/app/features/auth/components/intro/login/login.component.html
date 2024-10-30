@@ -1,0 +1,133 @@
+<div class="px-md-5 mx-md-5"  *ngIf="pageLoad">
+
+    <div class="row">
+        <div class="col-xl-8">
+            <div class="d-flex align-items-center cursor-pointer" routerLink="/" *ngIf="false">
+                <button class="square-btn gray-btn">
+                    <span *ngIf="lan == 'AR'">
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </span>
+                    <span *ngIf="lan == 'EN'">
+                        <mat-icon>keyboard_arrow_left</mat-icon>
+                    </span>
+                </button>
+                <span class="font-20 text-color-blue mx-3">{{staticTranslation?.back}}</span>
+            </div>
+            <h1 class="font-30 font-weight-bolder text-color-black my-1" *ngIf="userType != 'CUS'">{{staticTranslation?.welcomeForBus}}</h1>
+            <h1 class="font-21 font-weight-bold text-color-black mb-2" *ngIf="userType != 'CUS'">{{staticTranslation?.welcomeForBusMas}}</h1>
+            <h1 class="font-75 font-weight-bolder text-color-black my-1" *ngIf="userType == 'CUS'">{{staticTranslation?.welcomeForCustomer}}</h1>
+            <br>
+            <div class="user-types">
+                <div class="item active p-4 mb-4 d-flex align-items-center" *ngIf="userType == 'BU'">
+                    <div class="icon p-4">
+                        <i class="fi fi-building font-40"></i>
+                    </div>
+                    <span class="mx-3"></span>
+                    <div class="d-flex flex-column flex-grow-1">
+                        <span class="font-21 font-weight-bold name">{{staticTranslation?.businessUser}}</span>
+                        <div class="font-14 font-weight-medium">
+                            <span class="text-color-gray disc">{{staticTranslation?.businessUserMassge}}</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item active p-4 mb-4 d-flex align-items-center" *ngIf="false">
+                    <div class="icon p-4">
+                        <i class="fi fi-user font-40"></i>
+                    </div>
+                    <span class="mx-3"></span>
+                    <div class="d-flex flex-column flex-grow-1">
+                        <span class="font-21 font-weight-bold name"> {{staticTranslation?.customer}}</span>
+                        <div class="font-14 font-weight-medium">
+                            <span class="text-color-gray disc">{{staticTranslation?.customerMassge}}</span>
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+           
+            <form [formGroup]="loginForm" autocomplete="off" (ngSubmit)="submit() ">
+                <div class="row">
+                    <div class="col-md-9 mb-3" *ngIf="(probertyData?.['userName']?.['apsVisible'] ?? 'T') === 'T'"        >
+                        <label class="font-14 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['userName']['ahdCaption']}}</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['userName']['ahdCaption']}}</mat-label>
+                            <label class="mat-form-content">
+                                <input autocomplete="off" type="text" matInput placeholder="{{probertyData['userName']['ahdCaption']}}"
+                                    formControlName="userName">
+                            </label>
+                        </mat-form-field>
+                        <div *ngIf="loginForm.controls['userName'].errors &&
+                        loginForm.controls['userName'].errors['required'] && 
+                        loginForm.controls['userName'].touched" class="text-danger">
+                            {{probertyData['userName']['ahdCaption']}} {{staticTranslation?.isRequired}}.
+                        </div>
+                    </div>
+                    <div class="col-md-9 mb-3" *ngIf="probertyData['password']['apsVisible']=='T'">
+                        <label class="font-14 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['password']['ahdCaption']}}</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['password']['ahdCaption']}}</mat-label>
+                            <label class="mat-form-content">
+                                <input autocomplete="off"  type="password" matInput placeholder="{{probertyData['password']['ahdCaption']}}"
+                                    formControlName="password" (mouseup)="onMouseUp($event)" (blur)="onBlur($event)">
+                            </label>
+
+
+
+                            <button matSuffix class="square-btn" (click)="toggleKeyboard()" type="button">
+                                <span class="text-color-blue" >
+                                    <i class="fi fi-keyboard font-20"></i>
+                                  </span>
+                              </button>
+
+                        </mat-form-field>
+
+
+
+                        <div *ngIf="loginForm.controls['password'].errors &&
+                        loginForm.controls['password'].errors['required'] && 
+                        loginForm.controls['password'].touched" class="text-danger">
+                            {{probertyData['password']['ahdCaption']}} {{staticTranslation?.isRequired}}.
+                        </div>
+
+                        <!-- <div *ngIf="keyBoardToggle">
+                            <virtual-keyboard (toParentValue)='onApplyWrite($event)'></virtual-keyboard>
+                        </div> -->
+                    </div>
+
+
+                    <div class="col-md-9 mb-4" *ngIf="probertyData['remember']['apsVisible']== 'T'">
+                        <mat-checkbox formControlName="remember"><span class="font-17 font-weight-medium text-color-black">{{probertyData['remember']['ahdCaption']}}</span>
+                        </mat-checkbox>
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <button class="btn button-primary w-100" mat-button type="submit" [disabled]="loginForm.invalid">
+
+                            <span>{{staticTranslation?.login}}</span>
+
+                        </button>
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <div *ngIf="userType == 'CUS'" class="d-flex justify-content-center font-14 font-weight-medium">
+                            <span class="text-color-black">{{staticTranslation?.forgotPassword}}</span>
+                            <a routerLink="/mobile-number" (click)="resetPassword()" class="text-color-blue mx-1">{{staticTranslation?.resetPassword}}</a>
+
+                        </div>
+                    </div>
+                    <div class="col-md-9 mb-3" *ngIf="userType == 'CUS' ">
+
+                        <div class="d-flex flex-column justify-content-center align-items-center border-top pt-3 font-14 font-weight-medium">
+                            <span class="text-color-black d-inline-block text-center">{{staticTranslation?.new}} {{staticTranslation?.customer}} {{staticTranslation?.questionMark}} 
+                            <a routerLink="/register" class="text-color-blue mx-1 text-nowrap">{{staticTranslation?.signUpNow}}</a>
+                        </span>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

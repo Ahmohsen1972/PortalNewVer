@@ -1,0 +1,430 @@
+@import "variables";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+header {
+  height: 70px;
+  background-color: $blue;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 3;
+
+  &.white-header {
+    background-color: $white;
+
+    .navbar {
+      .navbar-collapse {
+        .navbar-nav {
+
+          .nav-item {
+            .nav-link {
+              color: $gray;
+
+              &:before {
+                display: none;
+              }
+
+              &:hover, &.active {
+                color: $black;
+              }
+            }
+          }
+        }
+      }
+
+      .header-utilities {
+        .notification-btn {
+          .has-notification {
+            &:before {
+              border: 2px solid $white;
+              background-color: $red;
+            }
+          }
+        }
+
+        .divider {
+          background-color: rgba($gray, .25);
+        }
+      }
+    }
+  }
+
+  .navbar {
+    align-items: center;
+
+    .navbar-brand {
+      display: block;
+
+      img {
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    .overlay {
+      opacity: 0;
+      visibility: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background: rgba(0, 0, 0, .32);
+      transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
+
+      &.active {
+        opacity: 1;
+        visibility: visible;
+        z-index: 2;
+        transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
+      }
+    }
+
+    .navbar-collapse {
+      margin: 0 30px;
+
+      .navbar-nav {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 0;
+
+        .nav-item {
+          .nav-link {
+            padding: 0 15px;
+            line-height: 70px;
+            display: block;
+            color: $white;
+            font-size: 1.2rem;
+            position: relative;
+
+            &:before {
+              content: '';
+              position: absolute;
+              right: 0;
+              left: 0;
+              bottom: -1px;
+              height: 6px;
+              width: 100%;
+              background-color: $white;
+              opacity: 0;
+              transition: all .3s linear;
+            }
+
+            &:hover, &.active {
+              &:before {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .header-utilities {
+      display: flex;
+      align-items: center;
+
+      .notification-btn {
+        .has-notification {
+          &:before {
+            content: attr(data-notification);
+            border: 2px solid $blue;
+            background-color: $red;
+            min-width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            position: absolute;
+            margin: -10px 6px;
+            font-size: 12px;
+            color: $white;
+          }
+        }
+      }
+
+      .profile-button {
+        border: 0;
+        background: none;
+
+        .img {
+          min-width: 50px;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $white;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+
+      .divider {
+        background-color: rgba($white, .25);
+        width: 1px;
+        height: 26px;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1500px) and (min-width: 1300px){
+  header {
+    .navbar {
+
+
+      .navbar-collapse {
+
+        margin: 0 15px;
+        .navbar-nav {
+
+          .nav-item {
+
+            .nav-link {
+              padding: 0 8px;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+
+      
+    }
+  }
+}
+
+@media (max-width: 1300px) and (min-width: 1200px){
+  header {
+    .navbar {
+
+
+      .navbar-collapse {
+
+        margin: 0 15px;
+        .navbar-nav {
+
+          .nav-item {
+
+            .nav-link {
+              padding: 0 8px;
+              font-size: .8rem;
+            }
+          }
+        }
+      }
+
+      
+    }
+  }
+}
+
+@include media-breakpoint-between(md, lg){
+  header {
+    .navbar {
+
+
+      .navbar-collapse {
+
+        margin: 0 15px;
+        .navbar-nav {
+
+          .nav-item {
+
+            .nav-link {
+              padding: 0 8px;
+              font-size: .9rem;
+            }
+          }
+        }
+      }
+
+      .header-utilities {
+        flex-grow: 1;
+        justify-content: flex-end;
+        .mat-button {
+          padding: 0 !important;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+        .square-btn.big, .mat-button {
+          width: 40px !important;
+          height: 40px !important;
+          min-width: 40px !important;
+          min-height: 40px !important;
+          max-width: 40px !important;
+          max-height: 40px !important;
+      }
+        .profile-button {
+          .img {
+            min-width: 44px;
+            width: 44px;
+            height: 44px;
+          }
+        }
+      }
+
+      
+    }
+  }
+}
+
+
+
+@include media-breakpoint-down(md) {
+  header {
+    .navbar {
+
+
+      .navbar-collapse {
+
+
+        .navbar-nav {
+
+          .nav-item {
+
+            .nav-link {
+              padding: 0 10px;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+
+      .header-utilities {
+        flex-grow: 1;
+        justify-content: flex-end;
+        .mat-button {
+          width: 40px !important;
+          height: 40px !important;
+          min-width: 40px !important;
+          min-height: 40px !important;
+          max-width: 40px !important;
+          max-height: 40px !important;
+          padding: 0 !important;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+        .square-btn.big {
+          width: 50px !important;
+          height: 50px !important;
+          min-width: 50px !important;
+          min-height: 50px !important;
+          max-width: 50px !important;
+          max-height: 50px !important;
+      }
+
+        .profile-button {
+          .img {
+            min-width: 44px;
+            width: 44px;
+            height: 44px;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+@include media-breakpoint-down(md) {
+  :host {
+    header {
+      height: 70px;
+      padding: 0 15px;
+      //&.white-header{
+      //  background-color: $white;
+      //  .navbar {
+      //    .navbar-collapse {
+      //      background: $white;
+      //    }
+      //
+      //  }
+      //}
+      .navbar {
+        justify-content: space-between;
+  
+        .search {
+          padding: 20px 20px 0;
+        }
+  
+        .navbar-collapse {
+          position: fixed;
+          margin: 0;
+          top: 0;
+          left: 0;
+          width: calc(100% - 50px);
+          height: 100%;
+          z-index: 10;
+          background: $white;
+          transform: translateX(-100%);
+          transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  
+          [dir=rtl] & {
+            right: 0;
+            left: auto;
+            transform: translateX(100%);
+          }
+  
+          &.active {
+            transform: translateX(0%) !important;
+            opacity: 1;
+            transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+            
+          }
+  
+          .navbar-nav {
+            flex-direction: column;
+  
+            .nav-item {
+              border-bottom: 1px solid $iron-1;
+  
+              .nav-link {
+                color: $gray;
+                padding: 0 20px;
+                font-size: 1.2rem;
+                font-weight: $font-semi-bold;
+  
+                &:before {
+                  display: none;
+                }
+  
+                &:hover, &.active {
+                  color: $black;
+                }
+              }
+            }
+          }
+        }
+  
+        .header-utilities {
+          flex-grow: 1;
+          justify-content: flex-end;
+  
+          .profile-button {
+            .img {
+              min-width: 44px;
+              width: 44px;
+              height: 44px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

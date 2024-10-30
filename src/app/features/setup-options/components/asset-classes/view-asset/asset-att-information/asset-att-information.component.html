@@ -1,0 +1,25 @@
+<div class="custom-container" *ngIf="pageLoad">
+  <div class="my-5">
+    <div class="d-flex justify-content-between align-items-start flex-wrap mb-1">
+      <div class="d-flex flex-column">
+        <h1 class="font-22 font-md-24 font-weight-bold text-color-black mb-0">
+          {{staticTranslation['assetClassAttributes']}} </h1>
+        <br />
+
+      </div>
+      <div class="d-flex align-items-center justify-content-center">
+        <!-- (click)="addAssetAtt()" -->
+        <span class="mx-2"></span>
+        <button class="btn button-primary font-16 font-weight-medium mb-0 px-1 px-md-3" (click)="addAssetAtt()">
+          <span>
+            {{staticTranslation['add']}} {{staticTranslation['assetClassAttributes']}}
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="general-box p-5">
+      <app-data-table [dataSource]="dataSource" [columnsdef]="columns" [viewComponent]="viewComponent"
+        [addEditComponent]="addEditComponent" [apiUrl]="apiUrl" [rowKey]="rowKey" [transaction]="transaction">
+      </app-data-table>
+    </div>

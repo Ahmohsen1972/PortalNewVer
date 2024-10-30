@@ -1,0 +1,43 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+  <h2 class="font-33 font-md-24 font-weight-bold text-color-black">Main information</h2>
+</div>
+
+<div class="info-section reverse">
+
+  <div class="info-item">
+    <span class="name">Low Value</span>
+    <span class="disc">{{data.row?.rvLowValue}} </span>
+  </div>
+
+  <div class="info-item">
+    <span class="name">Value Description</span>
+    <span class="disc">{{data.row?.rvMeaning}} </span>
+  </div>
+
+  <div class="info-item">
+    <span class="name">Order</span>
+    <span class="disc">{{data.row?.orderHint}} </span>
+  </div>
+
+  <div class="info-item">
+    <span class="name">Foreign Value Description </span>
+    <span class="disc">{{data.row?.rvForeignMeaning}} </span>
+  </div>
+
+  <!-- <div class="info-item" >
+        <span class="name">cgKey Parent</span>
+        <span class="disc">{{data.row?.cgKeyParent}} </span>
+      </div> -->
+
+  <div class="info-item">
+    <span class="name">Parent Name</span>
+    <span class="disc">{{data.row?.parentName}} </span>
+  </div>
+
+  <div class="info-item">
+    <span class="name">Visible</span>
+    <span *ngIf="visible == 'T'" style='font-size:30px;'>&#10004;</span>
+    <span *ngIf="visible == 'F'" style='font-size:30px;'>&#10008;</span>
+  </div>
+
+</div>

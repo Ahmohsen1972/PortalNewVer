@@ -1,0 +1,271 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+    <h2 class="font-33 font-md-24 font-weight-bold text-color-black">client Setup</h2>
+</div>
+
+
+<form [formGroup]="clientForm" *ngIf="pageLoad">
+    <div class="p-3">
+        <div class="row">
+
+            <mat-dialog-content class="h-100 border-top pt-3">
+            <div class="row">
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Local Name</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntLocalName" matInput placeholder="Local Name" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Foreign Name</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntForeignName" matInput placeholder="Foreign Name" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Local Address</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntLocalAddress" matInput placeholder="Local Address" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Foreign Address</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntForeignAddress" matInput placeholder="Foreign Address" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Contact Local Name</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntContactLocalName" matInput placeholder="Contact Local Name" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Contact Foreign Name</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntContactForeignName" matInput placeholder="Contact Foreign Name" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Contact Phone</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntContactPhone" matInput placeholder="Contact Phone" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Contact Mobile</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntContactMobile" matInput placeholder="Contact Mobile" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Number Of employees</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntNoOfEmployees" matInput placeholder="Number Of employees" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Number Of Branches</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntNoOfBranches" matInput placeholder="Number Of Branches" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Phone</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntPhones" matInput placeholder="Phone" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Email</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntContactEmail" matInput placeholder="Email" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">First Weekend</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntWeekEnd" matInput placeholder="First Weekend" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Second Weekend</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntOtherWeekEnd" matInput placeholder="Second Weekend" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Escalation Days</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntEscalationDays" matInput placeholder="Escalation Days" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Cleansing Days</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntCleansinDays" matInput placeholder="Cleansing Days" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Max Running Request</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntMaxRuningRequests" matInput placeholder="Max Running Request" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">CS Expiry Days</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="clntDelayedDays" matInput placeholder="CS Expiry Days" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+        <!-- <div class="row">
+
+            <div class="col-md-12">
+               
+               
+                <div class="d-flex align-items-center justify-content-center">
+                    <input class="d-none" (change)="onSelectLogo($event.target.files)" #logo type="file" >
+                    <button (click)="logo.click()" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+                        <span>
+                            Update logo
+                        </span>
+                    </button>       
+                  </div>
+            </div>
+
+
+        </div> -->
+
+            </mat-dialog-content>
+        </div>
+    </div>
+</form>
+
+
+<div *ngIf="status!='view' " class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+    <button (click)="resetForm()" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3"
+        matDialogClose>
+        <span>Dismiss</span>
+    </button>
+    <span class="mx-2"></span>
+    <button (click)="onSubmit()" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+        <span>
+            Update
+        </span>
+    </button>
+</div>

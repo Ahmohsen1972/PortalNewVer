@@ -1,0 +1,67 @@
+<div class="popup-container" *ngIf="pageLoad">
+    <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+        <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">{{selectedOperation}} Module Bind Param
+            </h3>
+        <button class="mat-close-modal" matDialogClose>
+            <i class="fi fi-close font-18"></i>
+        </button>
+    </div>
+
+    <mat-dialog-content>
+
+
+        <div class="p-3">
+            <form [formGroup]="moduleBindParamForm">
+                <div class="row">  
+                    
+                    <div class="col-12 mb-4">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Module Attribute Name </label>
+                        <mat-form-field class="primary-form font-17">
+                          <mat-label>{{data.row.maLocalName}}</mat-label>
+                          <label class="mat-form-content">
+                            <mat-select formControlName="maKey">
+                              <mat-option *ngFor="let data of mappedModAttData" [value]=data.maKey>{{data.maLocalName}}</mat-option>
+                            </mat-select>
+                          </label>
+                        </mat-form-field>
+                      </div>
+
+                    <div class="col-12 mb-3">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center"> Order</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>Order</mat-label>
+                            <label class="mat-form-content">
+                                <input formControlName="lmbpOrder" matInput placeholder="Order" />
+                            </label>
+                        </mat-form-field>
+                    </div>
+
+                  
+
+                   
+
+                  
+                  
+                </div>
+            </form>
+
+        </div>
+
+    </mat-dialog-content>
+
+    <div class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+        <button class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+            <span>Dismiss</span>
+        </button>
+        <span class="mx-2"></span>
+        <button (click)="onSubmit()" [class.disabled]="isDisabled"
+            class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+            <span>
+               {{btnAction}} 
+            </span>
+        </button>
+    </div>
+
+</div>
+
+

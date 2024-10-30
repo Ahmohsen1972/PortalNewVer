@@ -1,0 +1,98 @@
+<form [formGroup]="languageForm" (ngSubmit)="onSubmit()" *ngIf="pageLoad">
+  <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+    <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">New Language</h3>
+    <button class="mat-close-modal" matDialogClose>
+      <i class="fi fi-close font-18"></i>
+    </button>
+  </div>
+
+  <mat-dialog-content class="h-100 border-top pt-3">
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center"> Name</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Name</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="Language Local Name" formControlName="langLocalName" />
+
+        </label>
+      </mat-form-field>
+    </div>
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Default Language </label>
+
+      <div class="col-12 mb-3">
+        <mat-checkbox [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"><span
+            class="font-17 font-weight-semi-bold text-color-black"> </span></mat-checkbox>
+      </div>
+    </div>
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center"> Foriegn Name</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Language Foriegn Name</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="Language Foriegn Name" formControlName="langForeignName" />
+
+        </label>
+      </mat-form-field>
+    </div>
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Order</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Language Display Order</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="Language Display Order" formControlName="langdisplayOrder" />
+
+        </label>
+      </mat-form-field>
+    </div>
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Direction</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Direction</mat-label>
+        <label class="mat-form-content">
+          <mat-select class="form-control" formControlName="langDir">
+            <mat-option *ngFor="let data of languagesDirectionData" [value]="data">{{data}}</mat-option>
+          </mat-select>
+        </label>
+      </mat-form-field>
+    </div>
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Short Name</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Language Short Name</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="Language Short Name" formControlName="langsShortName" />
+
+        </label>
+      </mat-form-field>
+    </div>
+
+  </mat-dialog-content>
+
+
+  <div class="d-flex align-items-center justify-content-center">
+    <button type="button" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+      <span>Dismiss</span>
+    </button>
+    <span class="mx-2"></span>
+    <button type="submit" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3"
+      [class.disabled]="isDisabled">
+      <span>
+        {{actionBtn}}
+      </span>
+    </button>
+  </div>
+
+</form>

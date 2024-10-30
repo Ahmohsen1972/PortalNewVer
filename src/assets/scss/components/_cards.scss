@@ -1,0 +1,106 @@
+.main-card {
+  border: 1px solid $iron-1;
+  border-radius: 10px;
+  background-color: $off-white-2;
+  position: relative;
+  cursor: pointer;
+  transition: all .3s linear;
+
+  .icon {
+    border: 1px solid $iron-1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: $gray;
+    transition: all .3s linear;
+  }
+
+  .name {
+    color: $black;
+    transition: all .3s linear;
+  }
+
+  .disc {
+    color: $gray;
+    transition: all .3s linear;
+  }
+
+  .number{
+    color: $black;
+    transition: all .3s linear;
+  }
+
+  &:after {
+    content: 'keyboard_arrow_right';
+    font-family: 'Material Icons';
+    //opacity: 0;
+    font-size: 30px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $gray;
+    transition: all .3s linear;
+    [dir=rtl] & {
+      content: 'keyboard_arrow_left';
+    }
+  }
+
+  &.active {
+    &:after {
+      opacity: 0 !important;
+    }
+  }
+
+  &:hover, &.active {
+    border: 1px solid $blue;
+    box-shadow: 0 0 0 2px $blue;
+
+    .icon {
+      border-radius: 10px;
+      color: $white;
+      background-color: $blue;
+    }
+
+    .name, .number, .disc , &:after{
+      color: $blue;
+    }
+  }
+}
+
+.contact-box{
+  .item{
+    border-radius: 5px;
+    border: 1px solid $iron-1;
+    background-color: $white;
+    .status{
+      display: inline-flex;
+      font-size: 14px;
+    }
+  }
+}
+
+.guarantor-card{
+  border-radius: 5px;
+  background-color: $iron-1;
+  display: flex;
+  .img{
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .guarantor-name{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .guarantor-code{
+    line-height: 1;
+  }
+}

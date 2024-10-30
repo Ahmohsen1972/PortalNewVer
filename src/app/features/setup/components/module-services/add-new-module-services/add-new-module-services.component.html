@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+  <h2 class="font-33 font-md-24 font-weight-bold text-color-black">Service</h2>
+
+</div>
+
+<!--  *ngIf="pageLoad"-->
+<form [formGroup]="mainInfoForm" *ngIf="pageLoad">
+  <div class="p-3">
+    <div class="row">
+      <!-- *ngIf="probertyData['wppLFirstName']['apsVisible'] == 'T'" -->
+      <div class="col-md-6 mb-3" *ngIf="status!='view' ">
+        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Serv URL </label>
+        <mat-form-field class="primary-form font-17">
+          <!--   <mat-label>{{probertyData['wppLFirstName']['ahdCaption']}}</mat-label>-->
+          <label class="mat-form-content">
+            <input formControlName="serviceURL" matInput placeholder="Serv Code" />
+          </label>
+        </mat-form-field>
+      </div>
+
+
+
+
+      <!--   --------------------------- -->
+
+
+      <div class="col-md-6 mb-3" *ngIf="status!='view' ">
+        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Serv Desc</label>
+        <mat-form-field class="primary-form font-17">
+          <!--   <mat-label>{{probertyData['wppLFirstName']['ahdCaption']}}</mat-label>-->
+          <label class="mat-form-content">
+            <input formControlName="description" matInput placeholder="description" />
+          </label>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 mb-4">
+        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Module </label>
+        <mat-form-field class="primary-form font-17">
+          <mat-label>Module </mat-label>
+          <label class="mat-form-content">
+            <mat-select formControlName="modKey">
+              <!-- (change)="onChangeDirection(languageForm.get('langDir').value)" -->
+              <!-- [value]="opt.key" -->
+              <mat-option *ngFor="let opt of modNameData " [value]="opt.Code">
+                {{opt.Name}}
+
+              </mat-option>
+            </mat-select>
+
+          </label>
+        </mat-form-field>
+
+      </div>
+
+
+      <div class="col-12 mb-4">
+        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Service Type</label>
+        <mat-form-field class="primary-form font-17">
+          <mat-label>Service Type</mat-label>
+          <label class="mat-form-content">
+            <mat-select formControlName="serviceType">
+              <!-- (change)="onChangeDirection(languageForm.get('langDir').value)" -->
+              <!-- [value]="opt.key" -->
+              <mat-option *ngFor="let opt of mainModLocalnameData " [value]="opt.Code">
+                {{opt.Name}}
+
+              </mat-option>
+            </mat-select>
+
+          </label>
+        </mat-form-field>
+
+      </div>
+
+    </div>
+
+  </div>
+</form>
+
+
+<div *ngIf="status!='view' " class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+  <button (click)="resetForm()" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3"
+    matDialogClose>
+    <span>Dismiss</span>
+  </button>
+  <span class="mx-2"></span>
+  <!--[disabled]="mainInfoForm.invalid" -->
+  <button (click)="onSubmitMainInfo()" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+    <span>
+      Save
+    </span>
+  </button>
+</div>
+
+<!-- </div> -->

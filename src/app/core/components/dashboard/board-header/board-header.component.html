@@ -1,0 +1,201 @@
+<header *ngIf="pageLoad">
+  <nav class="navbar d-flex w-100">
+    <span class="toggle-menu cursor-pointer d-lg-none d-inline-flex" (click)="toggleMenu()">
+      <fa-icon [icon]="faBars" class="font-26" [ngClass]="['text-color-white']"></fa-icon>
+    </span>
+    <a class="navbar-brand mx-4 mx-lg-0" routerLink (click)="iconBrandClick()">
+      <img src="assets/images/logo.svg" alt="logo">
+
+    </a>
+    <div class="overlay" [ngClass]="{'active': menuOpened}" (click)="toggleMenu()"></div>
+    <div class="navbar-collapse flex-grow-1" [ngClass]="{'active': menuOpened}">
+      <div class="search d-block d-lg-none" *ngIf="menuOpened">
+        <mat-form-field class="primary-form search-input font-14">
+          <mat-label>{{staticTranslation['search']}}…</mat-label>
+          <span class="d-flex align-items-center" matPrefix>
+            <i class="fi fi-search"></i>
+          </span>
+          <label class="mat-form-content">
+            <input matInput placeholder="{{staticTranslation['search']}}…">
+          </label>
+        </mat-form-field>
+      </div>
+      <!-- navbar list for entry page -->
+      <ul class="navbar-nav d-flex" *ngIf="inEntry">
+
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/entry">{{staticTranslation['financeServices']}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login/customer">{{staticTranslation['home']}}</a>
+        </li>
+      </ul>
+      <!-- navbar list after login -->
+      <ul class="navbar-nav d-flex" *ngIf="!inEntry">
+        <li class="nav-item" *ngFor="let module of modules" [class.d-none]="userIsadmin=='T'">
+          <a class="nav-link" (click)="closeMenu()" routerLinkActive="active" routerLink="{{module.modPagePath}}">
+            {{module.description}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="closeMenu()" routerLinkActive="active" *ngIf="userIsadmin=='T'"
+            routerLink="/dashboard/setup">Setup</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="closeMenu()" routerLinkActive="active" *ngIf="userIsadmin=='T'"
+            routerLink="/dashboard/localize">Localize</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="closeMenu()" routerLinkActive="active" *ngIf="userIsadmin=='T'"
+            routerLink="/dashboard/manage-img">Mangage Images</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="closeMenu()" routerLinkActive="active" *ngIf="userIsadmin=='T'"
+            routerLink="/dashboard/setup-options">Setup Options</a>
+        </li>
+
+
+        <li class="nav-item d-block d-lg-none" *ngIf="menuOpened && userType=='CUS' && !newRequest">
+          <a class="nav-link" (click)="closeMenu()" routerLinkActive="active"
+            routerLink="/dashboard/transactions/my-requests/new" (click)="nullifyUserKeyFromCreate()">
+            {{staticTranslation['NewRequest']}} </a>
+        </li>
+      </ul>
+    </div>
+    <!-- navbar utilities in entry -->
+    <div class="header-utilities" *ngIf="inEntry">
+      <button class="square-btn big btn-link text-color-white font-20" *ngIf="translateBtnToggle"
+        (click)="changeLang('AR'); onChangeLanguage('AR')">
+        <span>ع</span>
+      </button>
+      <button class="square-btn big btn-link text-color-white font-20" *ngIf="!translateBtnToggle"
+        (click)="changeLang('EN'); onChangeLanguage('EN')">
+        <span>EN</span>
+      </button>
+    </div>
+    <!-- navbar utilities after login --> 
+    <div class="header-utilities" *ngIf="!inEntry">
+      <button mat-button class="btn px-3 mx-2 " [ngClass]="['button-white']"
+        *ngIf="false">{{staticTranslation['createNotification']}} </button>
+      <!-- <mat-slide-toggle (change)="isWhiteMode = !isWhiteMode" class="mx-2 d-none d-lg-flex"></mat-slide-toggle> -->
+      <button mat-button class="btn px-3 mx-2 " [ngClass]="['button-white']" *ngIf="userType == 'CUS' && !newRequest"
+        (click)="nullifyUserKeyFromCreate()">
+        <span class="d-none d-xl-block">
+          {{staticTranslation['NewRequest']}}
+        </span>
+        <mat-icon class="d-block d-xl-none">add</mat-icon>
+      </button>
+      <button *ngIf="false" class="btn px-3 mx-2 d-none d-lg-block" [matMenuTriggerFor]="menu"
+        [ngClass]="['button-white']">
+        <span class="d-flex align-items-center justify-content-between">
+          Create request
+          <span class="mx-2"></span>
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </span>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button routerLink="/dashboard/transactions/my-requests" mat-menu-item
+          class="font-16 font-weight-medium text-color-black">
+          Drafts
+          <span class="mx-2"></span>
+          <span class="badge bg-color-blue">3</span>
+        </button>
+        <button routerLink="/dashboard/transactions/my-requests/new" mat-menu-item (click)="nullifyUserKeyFromCreate()"
+          class="font-16 font-weight-medium text-color-black">Create new request</button>
+      </mat-menu>
+      <!-- <button class="square-btn big btn-link d-none d-lg-flex" [satPopoverAnchor]='popoverSearch'
+      (click)="popoverSearch.toggle()" *ngIf="false">
+      <span>
+        <i class="fi fi-search font-20" [ngClass]="['text-color-white']"></i>
+      </span>
+    </button> -->
+      <sat-popover #popoverSearch hasBackdrop horizontalAlign="end" verticalAlign="below" class="search-panel"
+        *ngIf="false">
+        <div>
+          <mat-form-field class="primary-form search-input font-14">
+            <mat-label>{{staticTranslation['search']}}…</mat-label>
+            <span class="d-flex align-items-center" matPrefix>
+              <i class="fi fi-search"></i>
+            </span>
+            <label class="mat-form-content">
+              <input matInput placeholder="{{staticTranslation['search']}}…">
+            </label>
+          </mat-form-field>
+        </div>
+      </sat-popover>
+
+
+
+      <span  *ngIf="userIsadmin!='T'" class="divider mx-2 d-none d-lg-block"></span>
+
+      <button class="square-btn big btn-link text-color-white font-20" *ngIf="translateBtnToggle"
+        [disabled]="newRequest || newReport || updateReport || updateRequest"
+        [hidden]="userIsadmin=='T'"
+        (click)="changeLang('AR'); onChangeLanguage('AR')">
+        <span>ع</span>
+      </button>
+      <button class="square-btn big btn-link text-color-white font-20" *ngIf="!translateBtnToggle"
+        [disabled]="newRequest || newReport || updateReport|| updateRequest"
+        [hidden]="userIsadmin=='T'"
+        (click)="changeLang('EN'); onChangeLanguage('EN')">
+        <span>EN</span>
+      </button>
+      <span *ngIf="userIsadmin!='T'" class="divider mx-2 d-none d-lg-block"></span>
+      <button *ngIf="userIsadmin!='T'" class="square-btn big btn-link notification-btn" [satPopoverAnchor]='notification'
+        (click)="notification.toggle();showNotificationCounter=false;setReadNotificationOnClickBell()">
+        <span [ngClass]="{'has-notification':showNotificationCounter}" [attr.data-notification]="unReadCount">
+          <i class="fi fi-notification font-20 font-lg-30" [ngClass]="{'text-color-white': !isWhiteMode,
+       'text-color-blue':isWhiteMode}"></i>
+        </span>
+      </button>
+      <sat-popover #notification hasBackdrop horizontalAlign="end" verticalAlign="below">
+        <div class="notification-popover">
+          <ng-container *ngFor="let item of notificationList">
+            <!-- <app-notifications [data]="item" [read]="item?.ntfIsRead"></app-notifications> -->
+          </ng-container>
+          <div class="d-flex flex-column justify-content-center py-3 align-items-center font-18 font-weight-medium">
+            <span class="text-color-black d-inline-block text-center cursor-pointer">
+              <a (click)="navigateToAllNotifications()"
+                class="text-color-blue mx-1 text-nowrap">{{staticTranslation['SeeAll']}}</a>
+            </span>
+          </div>
+        </div>
+
+      </sat-popover>
+      <span *ngIf="userIsadmin!='T'" class="divider mx-2 d-none d-lg-block"></span>
+      <button class="profile-button px-0 px-lg-3" [matMenuTriggerFor]="profile">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="img">
+
+            <img *ngIf="imageSrc != 'null'" [src]="imageSrc" alt="">
+
+            <span *ngIf="imageSrc == 'null'" class="font-21 font-weight-bold text-color-blue">
+              {{userFullName?.split(' ')[0]?.substr(0,1)}}{{userFullName?.split(' ')[1]?.substr(0,1)}}
+            </span>
+
+          </div>
+          <span class="mx-2 d-none d-xl-flex"></span>
+          <div class="name flex-grow-1 d-none d-xl-flex">
+            <div class="d-flex flex-column align-items-baseline">
+              <span class="welcome font-16 line-height-1"
+                [ngClass]="['text-color-white']">{{staticTranslation['welcome']}}</span>
+              <span class="text font-16 font-weight-extra-bold text-truncate" style="max-width: 130px;"  [ngClass]="['text-color-white']">{{userFullName}}</span>
+            </div>
+            <span class="mx-2"></span>
+            <mat-icon class="text-color-white align-self-end" [ngClass]="['text-color-white']">keyboard_arrow_down
+            </mat-icon>
+          </div>
+
+        </div>
+      </button>
+      <mat-menu #profile="matMenu" xPosition="before" yPosition="below" class="w-100">
+        <button routerLink="/dashboard/profile" (click)="returnNewRequestToDefault()" mat-menu-item
+          class="font-16 font-weight-medium text-color-black" *ngIf="userType == 'CUS'">
+          {{staticTranslation['myProfile']}}
+        </button>
+        <button mat-menu-item class="font-16 font-weight-medium text-color-black"
+          (click)="logOut()">{{staticTranslation['logOut']}}</button>
+      </mat-menu>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,149 @@
+$link-color: #3f51b5;
+$link-hover-color: currentColor;
+$link-hover-decoration: none;
+$label-margin-bottom: 0;
+
+$font-thin: 100;
+$font-light: 300;
+$font-regular: 400;
+$font-medium: 500;
+$font-semi-bold: 600;
+$font-bold: bold;
+$font-extra-bold: 900;
+$font-family: 'Mulish';
+$font-size-base: 14;
+
+$icomoon-font-family: "Ithmaar" !default;
+$font-path: "assets/fonts" !default;
+
+//icons
+$fi-close: "\e919";
+$fi-download: "\e91a";
+$fi-eye: "\e91b";
+$fi-keyboard: "\e91c";
+$fi-log-path1: "\e91d";
+$fi-log-path2: "\e91e";
+$fi-log-path3: "\e91f";
+$fi-log-path4: "\e920";
+$fi-log-path5: "\e921";
+$fi-building: "\e900";
+$fi-user: "\e901";
+$fi-bank: "\e902";
+$fi-businessman: "\e903";
+$fi-calendar: "\e904";
+$fi-correct: "\e905";
+$fi-countries: "\e906";
+$fi-dashboard: "\e907";
+$fi-delete: "\e908";
+$fi-help: "\e909";
+$fi-info: "\e90a";
+$fi-jpg: "\e90b";
+$fi-list: "\e90c";
+$fi-manage-contract: "\e90d";
+$fi-manage-requests: "\e90e";
+$fi-money: "\e90f";
+$fi-notification: "\e910";
+$fi-paper: "\e911";
+$fi-pdf: "\e912";
+$fi-pen: "\e913";
+$fi-png: "\e914";
+$fi-privacy: "\e915";
+$fi-question: "\e916";
+$fi-search: "\e917";
+$fi-work: "\e918";
+
+
+//colors
+$black: #000000;
+$white: #FFFFFF;
+$iron: #E6E7E8;
+$iron-1: #E8E8E8;
+$gray: #9D9FA2;
+$dark-gray: #636466;
+$silver: #C7C8CA;
+$silver-1: #C1C1C1;
+$off-white: #F8F8F8;
+$off-white-1: #F4F4F4;
+$off-white-2: #FCFCFC;
+$off-white-3: #F2F2F2;
+// $blue: #0076BE;
+// $dark-blue: #035E9A;
+// $light-blue: #44ADE2;
+// $light-blue-1: #C1E7FF;
+// $sky-blue: #A1CDE8;
+$blue:hsl(251, 65%, 46%);
+$dark-blue: #0a0c0b;
+$light-blue: hsla(244, 65%, 36%, 0.864);
+$light-blue-1: #95f7c3;
+$sky-blue: #a1e8c5;
+$ocean: #22605C;
+$red: #F34235;
+$dark-red: #A31E21;
+$green: #96C93D;
+$dark-green: #00A894;
+$mid-green: #3FB9B3;
+$light-green: #D0F8F5;
+$yellow: #FAA400;
+$transparent: transparent;
+$colors: (
+  black:$black,
+  white: $white,
+  iron: $iron,
+  iron-1: $iron-1,
+  gray: $gray,
+  dark-gray: $dark-gray,
+  silver: $silver,
+  off-white: $off-white,
+  off-white-1: $off-white-1,
+  off-white-2: $off-white-2,
+  off-white-3: $off-white-3,
+  blue: $blue,
+  dark-blue: $dark-blue,
+  light-blue: $light-blue,
+  light-blue-1: $light-blue-1,
+  sky-blue: $sky-blue,
+  ocean: $ocean,
+  red: $red,
+  dark-red: $dark-red,
+  green: $green,
+  dark-green: $dark-green,
+  mid-green: $mid-green,
+  light-green: $light-green,
+  yellow: $yellow,
+  transparent: $transparent,
+);
+
+@mixin colors-bg-text {
+  @for $i from 1 through length($colors) {
+    $key: nth($colors, $i);
+    $value: nth($key, 2);
+    .bg-color-#{"" + nth($key, 1)} {
+      background-color: $value;
+    }
+    .text-color-#{"" + nth($key, 1)} {
+      color: $value;
+    }
+    .bg-color-#{"" + nth($key, 1)}-imp {
+      background-color: $value !important;
+    }
+    .text-color-#{"" + nth($key, 1)}-imp {
+      color: $value !important;
+    }
+
+      .#{"" + nth($key, 1)}-checkbox.mat-accent{
+          .mat-checkbox-frame{
+            border-color: $value !important;
+          }
+        &.mat-checkbox-checked{
+          .mat-checkbox-background{
+            background-color: $value !important;
+          }
+        }
+
+      }
+
+  }
+}
+
+
+  @include  colors-bg-text

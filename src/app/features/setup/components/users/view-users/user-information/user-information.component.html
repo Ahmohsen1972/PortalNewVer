@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+  <h2 class="font-33 font-md-24 font-weight-bold text-color-black">User Informatiom</h2>
+</div>
+
+<div class="info-section reverse" *ngIf="pageLoad">
+
+  <div class="info-item">
+    <span class="name">Login Name</span>
+    <span class="disc">{{userData?.usrLoginName}} </span>
+  </div>
+
+  <div class="info-item">
+    <span class="name">First Name</span>
+    <span class="disc">{{userData?.wppLFirstName}} </span>
+  </div>
+
+  <div class="info-item">
+    <span class="name">Middle Name</span>
+    <span class="disc">{{userData?.wppLMiddleName}} </span>
+  </div>
+</div>

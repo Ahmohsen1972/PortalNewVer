@@ -1,0 +1,75 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+  <h2 class="font-33 font-md-24 font-weight-bold text-color-black">Finance Client Product information</h2>
+  <!-- <button class="btn button-primary px-3 font-17 font-weight-md-medium" (click)="addNew()" *ngIf="status != 'view'">
+      <span>Add Address</span>
+    </button> -->
+</div>
+<mat-dialog-content>
+
+<div class="info-section reverse" *ngIf="pageLoad">
+  <div class="info-item">
+    <span class="name">clnt Local Name </span>
+    <span class="disc">{{financeProduct?.clntLocalName}} </span>
+  </div>
+  <div class="info-item">
+    <span class="name">Local Name</span>
+    <span class="disc">{{financeProduct?.fcpLName}} </span>
+  </div>
+
+  <div class="info-item">
+    <span class="name">Other Name</span>
+    <span class="disc">{{financeProduct?.fcpFName}} </span>
+  </div>
+  <div class="info-item">
+    <span class="name">Local Description</span>
+    <span class="disc">{{financeProduct?.fcpLDescription}} </span>
+  </div>
+  <div class="info-item">
+    <span class="name">Other Description</span>
+    <span class="disc">{{financeProduct?.fcpFDescription}} </span>
+  </div>
+  <div class="info-item">
+    <span class="name">Local Terms Conditions</span>
+    <span class="disc">
+      <div [innerHTML]="financeProduct?.fcpLTermsCondition"></div>
+    </span>
+  </div>
+  <div class="info-item">
+    <span class="name">Other Terms Conditions </span>
+    <span class="disc">
+      <div [innerHTML]="financeProduct?.fcpFTermsCondition"></div>
+    </span>
+  </div>
+
+  <div class="info-item">
+    <span class="name">Local Required Docuemnts</span>
+    <span class="disc">
+      <div [innerHTML]="financeProduct?.fcpLRequiredDocuments"></div>
+    </span>
+  </div>
+  <div class="info-item">
+    <span class="name">Other Required Docuemnts</span>
+    <span class="disc">
+      <div [innerHTML]="financeProduct?.fcpFRequiredDocuments"></div>
+    </span>
+  </div>
+  <div class="info-item">
+    <span class="name">Icon Font Name</span>
+    <span class="disc">{{financeProduct?.fcpIconPath}} </span>
+  </div>
+  <div class="info-item">
+    <span class="name">Items Status </span>
+    <span class="disc" *ngIf="financeProduct?.fcpItemsStatus=='M'"> Multiple Item</span>
+    <span class="disc" *ngIf="financeProduct?.fcpItemsStatus=='C'">Cash Product</span>
+    <span class="disc" *ngIf="financeProduct?.fcpItemsStatus=='I'">Single Item</span>
+
+  </div>
+
+  <div class="info-item">
+    <span class="name">Down Payment Allowed</span>
+    <span *ngIf="fcpDownPaymentAllowed == 'T'" style='font-size:30px;'>&#10004;</span>
+    <span *ngIf="fcpDownPaymentAllowed == 'F'" style='font-size:30px;'>&#10008;</span>
+  </div>
+
+</div>
+</mat-dialog-content>

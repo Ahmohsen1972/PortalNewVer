@@ -1,0 +1,38 @@
+
+
+  <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+    <h2 class="font-33 font-md-24 font-weight-bold text-color-black">Module Service information</h2>
+   
+  </div>
+  
+  <div class="info-section reverse" *ngIf="pageLoad">
+    
+    <div class="info-item" >
+      <span class="name">Code  Name</span>
+      <span class="disc">{{ModuleServices?.imsKey}} </span>
+    </div>
+
+    <div class="info-item" >
+        <span class="name">Description</span>
+        <span class="disc">{{ModuleServices?.description}} </span>
+      </div>
+
+
+      <div class="info-item" >
+        <span class="name">Service URL</span>
+        <span class="disc">{{ModuleServices?.serviceURL}} </span>
+      </div>
+
+
+      <div class="info-item" >
+        <span class="name">Service Type</span>
+        <span class="disc">{{ModuleServices?.serviceType}} </span>
+      </div>
+
+
+      <div class="info-item" >
+        <span class="name">Module	</span>
+        <span class="disc">{{ModuleServices?.modLocalName}} </span>
+      </div>
+  </div>
+  

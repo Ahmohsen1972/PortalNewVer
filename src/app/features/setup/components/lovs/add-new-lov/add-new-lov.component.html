@@ -1,0 +1,82 @@
+<form [formGroup]="lovForm" (ngSubmit)="onSubmit()" *ngIf="pageLoad">
+  <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+    <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">New Lov</h3>
+    <button class="mat-close-modal" matDialogClose>
+      <i class="fi fi-close font-18"></i>
+    </button>
+  </div>
+
+  <mat-dialog-content class="h-100 border-top pt-3">
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Name</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Name</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="Name" formControlName="lovName" />
+        </label>
+      </mat-form-field>
+    </div>
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Domain</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Domain</mat-label>
+        <label class="mat-form-content">
+          <mat-select formControlName="rvKey">
+            <mat-option *ngFor="let data of domainNameData" [value]=data.rvKey>{{data.rvDomain}}</mat-option>
+          </mat-select>
+        </label>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Query</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Query</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="Query" formControlName="lovQuery" readonly />
+        </label>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 mb-4" *ngIf=false>
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Type</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Type</mat-label>
+        <label class="mat-form-content">
+          <mat-select formControlName="lovType">
+            <mat-option *ngFor="let data of lovTypeData" [value]="data.rvLowValue">{{data.rvMeaning}}</mat-option>
+          </mat-select>
+        </label>
+      </mat-form-field>
+    </div>
+
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Validation</label>
+
+      <div class="col-12 mb-3">
+        <mat-checkbox [(ngModel)]="isChecked" [ngModelOptions]="{standalone: true}"><span
+            class="font-17 font-weight-semi-bold text-color-black"> </span></mat-checkbox>
+      </div>
+    </div>
+
+  </mat-dialog-content>
+
+  <div class="d-flex align-items-center justify-content-center">
+    <button type="button" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+      <span>Dismiss</span>
+    </button>
+    <span class="mx-2"></span>
+    <button type="submit" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3"
+      [class.disabled]="isDisabled">
+      <span>
+        Save
+      </span>
+    </button>
+  </div>
+</form>

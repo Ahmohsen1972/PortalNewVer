@@ -1,0 +1,44 @@
+.filters-btn {
+  background-color: transparent;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 13px;
+  font-size: 12px;
+  font-weight: $font-medium;
+  height: 35px;
+
+  &.coral {
+    color: $coral;
+    border-color: $coral;
+
+    line {
+      stroke: $coral !important;
+    }
+  }
+
+  &.gray {
+    color: $onyx;
+    border-color: $light-gray;
+
+    line {
+      stroke: #707070 !important;
+    }
+  }
+}
+
+.filters-popup-close-btn, .filters-popup-apply-btn {
+  border: none;
+  background-color: $transparent;
+  font-size: 1rem;
+  font-weight: $font-medium;
+}
+
+.filters-popup-close-btn {
+  color: $onyx;
+}
+
+.filters-popup-apply-btn {
+  color: $coral;
+}

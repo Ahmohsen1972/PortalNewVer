@@ -1,0 +1,61 @@
+<form [formGroup]="currencyForm" (ngSubmit)="onSubmit()" *ngIf="pageLoad">
+  <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+    <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">{{staticTranslation['NewCurrency']}}</h3>
+    <button class="mat-close-modal" matDialogClose>
+      <i class="fi fi-close font-18"></i>
+    </button>
+  </div>
+
+  <mat-dialog-content class="h-100 border-top pt-3">
+    <div class="col-12 mb-4" *ngIf="probertyData['wcrCode']['apsVisible'] == 'T'">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center"><i
+          class="devicons devicons-code"></i>{{probertyData['wcrCode']['ahdCaption']}}</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{probertyData['wcrCode']['ahdCaption']}}</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="{{probertyData['wcrCode']['ahdCaption']}}"
+            formControlName="currencyCode" />
+
+        </label>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mb-4" *ngIf="probertyData['wcrLocalName']['apsVisible'] == 'T'">
+      <label
+        class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wcrLocalName']['ahdCaption']}}</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{probertyData['wcrLocalName']['ahdCaption']}}</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="{{probertyData['wcrLocalName']['ahdCaption']}}"
+            formControlName="currencyLName" />
+
+        </label>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 mb-4" *ngIf="probertyData['wcrForeignName']['apsVisible'] == 'T'">
+      <label
+        class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wcrForeignName']['ahdCaption']}}</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{probertyData['wcrForeignName']['ahdCaption']}}</mat-label>
+        <label class="mat-form-content">
+
+          <input matInput placeholder="{{probertyData['wcrForeignName']['ahdCaption']}}"
+            formControlName="currencyFName">
+        </label>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <div class="d-flex align-items-center justify-content-center">
+    <button type="button" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+      <span> {{staticTranslation['dismiss']}}</span>
+    </button>
+    <span class="mx-2"></span>
+    <button type="submit" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+      <span>
+        {{staticTranslation['save']}}
+      </span>
+    </button>
+  </div>
+
+</form>

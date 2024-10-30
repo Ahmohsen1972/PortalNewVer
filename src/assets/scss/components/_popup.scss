@@ -1,0 +1,106 @@
+.mat-close-modal {
+  width: 43px;
+  height: 43px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($iron-1, .46);
+  border-radius: 5px;
+  border: none;
+  &:hover{
+    opacity: .9;
+  }
+
+}
+.main-popup{
+  .popup-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .dialog-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .mat-dialog-title{
+    margin: -24px -24px 0 !important;
+    padding: 24px;
+    min-height: 80px;
+  }
+
+  .mat-dialog-content{
+    border-top: 1px solid rgba($iron-1, .46);
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    overflow-y: auto;
+
+    flex-grow: 1;
+    .general-box{
+      border: 0 !important;
+      padding: 0 !important;
+    }
+  }
+
+  .mat-dialog-actions{
+    background-color: $white;
+    margin-bottom: 0 !important;
+    //button{
+    //  min-width:175px;
+    //}
+  }
+}
+
+
+@include media-breakpoint-up(md){
+  .stepper-modal{
+    .mat-dialog-title, .mat-dialog-actions{
+      display: none !important;
+    }
+    .mat-dialog-content{
+      max-height: none !important;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm){
+  .delete-popup{
+    width: 100%;
+    max-width: 100% !important;
+    height: auto;
+    bottom: 0 !important;
+    position: absolute !important;
+    border-top-right-radius: 24px !important;
+    .mat-dialog-container {
+      border-top-right-radius: 30px !important;
+      border-top-left-radius: 30px !important;
+      overflow: hidden !important;
+    }
+  }
+  .main-popup {
+    width: 100%;
+    max-width: 100% !important;
+    height: 100%;
+    bottom: 0 !important;
+    position: absolute !important;
+    border-top-right-radius: 24px !important;
+    .mat-dialog-title {
+      padding: 0 14px;
+      min-height: 65px;
+    }
+    .mat-dialog-content {
+      max-height: none;
+      flex-grow: 1;
+      .stepper-title{
+        display: none;
+      }
+    }
+    .mat-dialog-container {
+      border-top-right-radius: 0 !important;
+      border-top-left-radius: 0 !important;
+      // overflow: hidden !important;
+    }
+  }
+}

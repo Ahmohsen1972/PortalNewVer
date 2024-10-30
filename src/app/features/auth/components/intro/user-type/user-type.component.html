@@ -1,0 +1,23 @@
+<div class="p-md-5 m-md-5">
+    <h1 class="font-45 font-weight-bolder text-color-black mb-1"> {{staticTranslation['welcomeForBus']}}</h1>
+    <h1 class="font-21 font-weight-bold text-color-black mb-4">{{staticTranslation['logInAs']}}</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="user-types">
+                <div class="item p-4 mb-4 d-flex align-items-center" (click)="goLogin()">
+                    <div class="icon p-4">
+                        <i class="fi fi-building font-40"></i>
+                    </div>
+                    <span class="mx-3"></span>
+                    <div class="d-flex flex-column flex-grow-1">
+                        <span class="font-21 font-weight-bold name">{{staticTranslation['businessUser']}}</span>
+                        <div class="font-14 font-weight-medium">
+                            <span class="text-color-gray disc"> {{staticTranslation['businessUserText']}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

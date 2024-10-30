@@ -1,0 +1,34 @@
+<div class="custom-container" *ngIf="pageLoad">
+    <div class="my-5">
+        <div class="d-flex justify-content-between align-items-start flex-wrap mb-1">
+            <div class="d-flex flex-column">
+                <h1 class="font-22 font-md-24 font-weight-bold text-color-black mb-0">Finance Client Products</h1>
+                <br />
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb p-0 border-0 mt-n2 mb-2">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/dashboard/setup" class="font-14 font-weight-medium">FinanceProducts</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <a class="font-14 font-weight-medium">FinanceClientProducts</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="d-flex align-items-center justify-content-center">
+
+                <span class="mx-2"></span>
+                <button *ngIf="status!='view'" class="btn button-primary font-16 font-weight-medium mb-0 px-1 px-md-3"
+                    (click)="addFinanceClientProducts()">
+                    <span>
+                        New Finance Client Product
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <div class="general-box p-5">
+            <app-data-table [dataSource]="dataSource" [columnsdef]="columns" [viewComponent]="viewComponent"
+                [addEditComponent]="addEditComponent" [apiUrl]="apiUrl" [rowKey]="rowKey" [transaction]="transaction">
+            </app-data-table>
+        </div>

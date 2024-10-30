@@ -1,0 +1,70 @@
+.legend {
+
+  display: flex;
+  text-align: center;
+  align-items: center;
+
+  &:before {
+    content: '';
+    min-width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    margin: 0 5px;
+
+  }
+
+  &.blue {
+    color: $blue;
+
+    &:before {
+      background-color: $blue !important;
+    }
+  }
+
+  &.light-blue {
+    color: $light-blue;
+
+    &:before {
+      background-color: $light-blue !important;
+    }
+  }
+
+  &.yellow {
+    color: $yellow;
+
+    &:before {
+      background-color: $yellow !important;
+    }
+  }
+
+  &.red {
+    color: $red;
+
+    &:before {
+      background-color: $red !important;
+    }
+  }
+
+  &.green {
+    color: $green;
+
+    &:before {
+      background-color: $green !important;
+    }
+  }
+
+  &.sky-blue {
+    color: $sky-blue;
+
+    &:before {
+      background-color: $sky-blue !important;
+    }
+  }
+
+}
+
+
+
+
+
+

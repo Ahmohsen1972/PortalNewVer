@@ -1,0 +1,124 @@
+<div class="popup-container" *ngIf="pageLoad">
+    <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+        <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">{{data.action === 'Add'?
+            staticTranslation['add']:staticTranslation['edit']}} {{staticTranslation['assetClassAttributes']}} </h3>
+        <button class="mat-close-modal" matDialogClose>
+            <i class="fi fi-close font-18"></i>
+        </button>
+    </div>
+
+    <mat-dialog-content>
+
+
+        <div class="p-3">
+            <form [formGroup]="assetAttForm">
+
+                <div class="row">
+
+                    <div class="col-12 mb-4" *ngIf="probertyData['acaAssetAttributeName']['apsVisible'] == 'T'">
+                        <label
+                            class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['acaAssetAttributeName']['ahdCaption']}}
+
+                        </label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['acaAssetAttributeName']['ahdCaption']}}</mat-label>
+                            <mat-icon matPrefix><i class="fi fi-search"></i> </mat-icon>
+                            <label class="mat-form-content">
+                                <input type="text" (focus)="getLov()" (change)="validateValue($event )"
+                                    placeholder="{{probertyData['acaAssetAttributeName']['ahdCaption']}}"
+                                    aria-label="Number" matInput formControlName="attributeLocalName"
+                                    [matAutocomplete]="asset">
+                            </label>
+                            <mat-autocomplete #asset="matAutocomplete" (optionSelected)="onAssetSelection($event)">
+                                <mat-option *ngFor="let asset of assetFilteredOptions | async"
+                                    [value]="asset.local_name">
+                                    {{asset.local_name}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
+
+
+                    <!-- <div class="row">
+                    
+                    <div class="col-12 mb-4" *ngIf="probertyData['acaAssetAttributeName']['apsVisible'] == 'T'">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['acaAssetAttributeName']['ahdCaption']}}
+                            
+                        </label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['acaAssetAttributeName']['ahdCaption']}}</mat-label>
+                            <mat-icon matPrefix><i class="fi fi-search"></i> </mat-icon>
+                            <label class="mat-form-content">
+                              
+                                <input type="text"
+                                
+                                (change) = "validateValue($event )" 
+                                placeholder="{{probertyData['acaAssetAttributeName']['ahdCaption']}}"
+                                aria-label="Number"
+                                matInput
+                                
+                                formControlName="attributeLocalName" 
+                                [matAutocomplete]="auto">
+
+
+                                
+
+
+
+                            </label>
+                            <mat-autocomplete #auto="matAutocomplete"  (optionSelected)="onAssetSelection($event)">
+                                <mat-option *ngFor="let opt of assetFilteredOptions | async" value="{{opt.local_name }}">
+            
+                                  {{opt.local_name}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div> -->
+
+                    <div class="col-md-12 mb-3" *ngIf="probertyData['acaDisplayOrder']['apsVisible'] == 'T'">
+                        <label
+                            class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['acaDisplayOrder']['ahdCaption']}}
+                        </label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['acaDisplayOrder']['ahdCaption']}}</mat-label>
+                            <label class="mat-form-content">
+                                <input type = "number" formControlName="acaDisplayOrder" matInput
+                                    placeholder="{{probertyData['acaDisplayOrder']['ahdCaption']}}" />
+                            </label>
+                        </mat-form-field>
+                    </div>
+
+
+
+                    <div class="col-12 mb-3" *ngIf="probertyData['acaRequired']['apsVisible'] == 'T'">
+                        <mat-label>{{probertyData['acaRequired']['ahdCaption']}}</mat-label>
+                        <br>
+                        <mat-checkbox [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"><span
+                                class="font-17 font-weight-semi-bold text-color-black"> </span></mat-checkbox>
+                    </div>
+
+
+
+                </div>
+            </form>
+
+        </div>
+
+    </mat-dialog-content>
+
+    <div class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+        <button class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+            <span>{{staticTranslation['dismiss']}}</span>
+        </button>
+        <span class="mx-2"></span>
+        <!-- [disabled]="assetAttForm.invalid"-->
+        <button (click)="onSubmitAssetAtt()" [disabled]="assetAttForm.invalid"
+            class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+            <span>
+                {{staticTranslation[btnAction]}}
+
+            </span>
+        </button>
+    </div>
+
+</div>

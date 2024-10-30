@@ -1,0 +1,199 @@
+<div class="p-md-5 m-md-5" *ngIf="pageLoad">
+
+
+    <div class="row">
+        <div class="col-xl-9">
+            <div class="d-flex align-items-center cursor-pointer" routerLink="/otp">
+                <button class="square-btn gray-btn">
+                    <span *ngIf="lang == 'AR'">
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </span>
+                    <span *ngIf="lang == 'EN'">
+                        <mat-icon>keyboard_arrow_left</mat-icon>
+                    </span>
+                </button>
+                <span class="font-20 text-color-blue mx-3">{{staticTranslation['back']}}</span>
+            </div>
+            <h1 class="font-21 font-weight-bolder text-color-black my-1">{{staticTranslation['customerData']}}</h1>
+            <form [formGroup]="customerDataForm">
+                <div class="row">
+                    <div class="col-md-9 mb-3">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wppLFirstName']['ahdCaption']}}</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['wppLFirstName']['ahdCaption']}}</mat-label>
+                            <label class="mat-form-content">
+
+                                <input  matInput formControlName="localFirstName">
+                            </label>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-9 mb-3">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wppLLastName']['ahdCaption']}}</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['wppLLastName']['ahdCaption']}}</mat-label>
+                            <label class="mat-form-content">
+
+                                <input type="text" matInput formControlName="localLastName" >
+                            </label>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wppIdentityType']['ahdCaption']}}</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['wppIdentityType']['ahdCaption']}}</mat-label>
+                            <label class="mat-form-content">
+                                <mat-select formControlName="identityType" >
+                                    <mat-option *ngFor="let idType of identityTypeDomain" [value]="idType.Code">
+                                        {{idType.local_name}}
+                                    </mat-option>
+                                </mat-select>
+
+                            </label>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wppIdentityNumber']['ahdCaption']}}</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['wppIdentityNumber']['ahdCaption']}}</mat-label>
+                            <label class="mat-form-content">
+
+                                <input type="text" matInput placehol formControlName="identityNumber" >
+                            </label>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wppBirthDate']['ahdCaption']}}</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['wppBirthDate']['ahdCaption']}}</mat-label>
+                            <label class="mat-form-content">
+
+                                <input matInput [matDatepicker]="picker" formControlName="birthDate" >
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+
+                            </label>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wppSex']['ahdCaption']}}</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['wppSex']['ahdCaption']}}</mat-label>
+                            <label class="mat-form-content">
+
+                                <mat-select formControlName="sex" >
+                                    <mat-option *ngFor="let sex of sexDomain " [value]="sex.Code">
+                                        {{sex.local_name}}
+                                    </mat-option>
+                                </mat-select>
+                            </label>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+                <h1 class="font-21 font-weight-bolder text-color-black my-1">{{staticTranslation['loginData']}}</h1>
+
+                <div class="row">
+                    <div class="col-md-9 mb-3">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['loginName']['ahdCaption']}}</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['loginName']['ahdCaption']}}</mat-label>
+                            <label class="mat-form-content">
+
+                                <input type="text" matInput placeholder="{{probertyData['loginName']['ahdCaption']}}"
+                                    (ngModelChange)="ngModelChange($event)" formControlName="userName">
+                            </label>
+                        </mat-form-field>
+                        <div *ngIf="customerDataForm.controls['userName'].errors &&
+                        customerDataForm.controls['userName'].errors['required'] && 
+                        customerDataForm.controls['userName'].touched" class="text-danger">
+                            {{probertyData['loginName']['ahdCaption']}} {{staticTranslation['isRequired']}}.
+                        </div>
+                        <div *ngIf="usedUserNameErrorMsg" class="text-danger">
+                            {{staticTranslation['usedUserNameErrorMsg']}}
+                        </div>
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['passwordHash']['ahdCaption']}}</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['passwordHash']['ahdCaption']}}</mat-label>
+                            <label class="mat-form-content">
+
+                                <input type="password" matInput placeholder="{{probertyData['passwordHash']['ahdCaption']}}"
+                                    formControlName="password" (ngModelChange)="passwordChange($event)">
+                            </label>
+                        </mat-form-field>
+                        <div
+                        *ngIf="customerDataForm.controls['password'].errors && customerDataForm.controls['password'].touched">
+                        <div *ngIf="customerDataForm.controls['password'].errors['required']"
+                            class="text-danger">
+                            {{probertyData['passwordHash']['ahdCaption']}} {{staticTranslation['isRequired']}}.
+                        </div>
+                        <div *ngIf="customerDataForm.controls['password'].errors['pattern']"
+                            class="text-danger">
+                            <p>{{staticTranslation['passwordFormat']}}</p>
+                            <p>{{staticTranslation['passwordFormat2']}}</p>
+                            <p>{{staticTranslation['passwordFormat3']}}</p>
+                        </div>                       
+                    </div>
+                    <div *ngIf="passwordErrorMsg" class="text-danger">
+                        {{staticTranslation['passwordErrorMsg']}}
+                    </div>
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">
+                            {{probertyData['confirmPassword']['ahdCaption']}}
+                        </label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{probertyData['confirmPassword']['ahdCaption']}}</mat-label>
+                            <label class="mat-form-content">
+
+
+                                <input type="password" matInput
+                                    placeholder="{{probertyData['confirmPassword']['ahdCaption']}}"
+                                    formControlName="confirmPassword">
+                            </label>
+                        </mat-form-field>
+                        <div *ngIf="customerDataForm.controls['confirmPassword'].errors && customerDataForm.controls['confirmPassword'].touched">
+                            <div *ngIf="customerDataForm.controls['confirmPassword'].errors['required']" class="text-danger">
+                                {{probertyData['confirmPassword']['ahdCaption']}} {{staticTranslation['isRequired']}}.
+                            </div>
+
+                            <div *ngIf="customerDataForm.controls['confirmPassword'].errors['mustMatch']" class="text-danger">
+                                {{staticTranslation['matchPasswords']}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <!-- <re-captcha (resolved)="resolved($event)" siteKey="6LdvlaQZAAAAAIEDgGccuDq4n87cSFDXywT9jOMB"> -->
+                        <!-- </re-captcha> -->
+
+                        <div *ngIf="isCustomerDataFormSubmitted && captchaValue == false" class="text-danger">
+                            {{staticTranslation['this']}} {{staticTranslation['verification']}} {{staticTranslation['isRequired']}}.
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-9 mb-4">
+                        <mat-checkbox formControlName="remember"><span class="font-15 font-weight-medium text-color-black">{{staticTranslation['rememberMe']}}</span>
+                        </mat-checkbox>
+                        <br/>
+                        <br/>
+                        
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="col-md-9 mb-3">
+                        <button class="btn button-primary w-100" (click)="saveUser()" [disabled]="customerDataForm.invalid">
+                            <span>{{staticTranslation['signUp']}}</span>
+                        </button>
+                    </div>
+
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+</div>

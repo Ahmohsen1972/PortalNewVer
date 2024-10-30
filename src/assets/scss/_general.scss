@@ -1,0 +1,267 @@
+html {
+  font-size: 13px;
+  &[dir="rtl"] {
+    font-size: 15px;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+// zoom out for screens smallest than 1366px
+
+@media (max-width: 1366px) {
+  html {
+    font-size: 12px;
+  }
+  //   body{
+  //  /  zoom: 80%;
+  //   }
+}
+
+body {
+  margin: 0;
+  font-size: 1rem;
+  font-family: $font-family;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background-color: $off-white;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+  -webkit-box-shadow: none;
+  border: 0px solid #d8d8d8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  -webkit-box-shadow: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  -webkit-box-shadow: inset 1px 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #888;
+  -webkit-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+app-root {
+  height: 100%;
+}
+
+.custom-container {
+  width: 100%;
+  padding: 0 30px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
+
+.no-boxshadow {
+  box-shadow: none !important;
+}
+
+.no-border-radius {
+  border-radius: 0 !important;
+}
+
+.radius-3 {
+  border-radius: 3px;
+}
+
+.radius-4 {
+  border-radius: 4px;
+}
+
+.radius-5 {
+  border-radius: 5px;
+}
+
+.radius-6 {
+  border-radius: 6px;
+}
+
+.list-unstyled {
+  list-style: none;
+  padding: 0;
+}
+
+.info-section {
+  &.reverse {
+    .info-item {
+      background-color: $white;
+
+      &:nth-child(odd) {
+        background-color: rgba($iron-1, 0.25);
+      }
+    }
+  }
+
+  .info-item {
+    padding: 20px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgba($iron-1, 0.25);
+
+    [dir="rtl"] & {
+      direction: rtl;
+    }
+
+    &:nth-child(odd) {
+      background-color: $white;
+    }
+
+    .name {
+      width: 250px;
+      font-size: 1.2rem;
+      font-weight: $font-medium;
+      color: $gray;
+    }
+
+    .disc {
+      width: calc(100% - 250px);
+      font-size: 1.2rem;
+      font-weight: $font-bold;
+      color: $black;
+    }
+
+    @include media-breakpoint-down(md) {
+      padding: 15px;
+      .name,
+      .disc {
+        width: 100%;
+        font-size: 1rem;
+      }
+      .name {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+.ql-editor {
+  height: 150px !important;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.custom-paging {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .item {
+    min-width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    border: 2px solid $iron-1;
+    background-color: $white;
+    font-size: 1.2rem;
+    color: $dark-gray;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+
+    &.disabled {
+      border-color: $iron-1 !important;
+      background-color: $iron !important;
+      color: $dark-gray !important;
+    }
+
+    &.active,
+    &:hover {
+      border-color: $blue;
+      background-color: $blue;
+      color: $white;
+    }
+  }
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.spinner {
+  color: $blue;
+}
+
+.line-height-1 {
+  line-height: 1;
+}
+
+.general-box {
+  background-color: $white;
+  border: 2px solid $iron-1;
+}
+
+.loading-bg {
+  min-height: 30px;
+  background-color: #eeeeee;
+  background-image: linear-gradient(
+    90deg,
+    #eeeeee 25%,
+    #e6e6e6 37%,
+    #eeeeee 63%
+  );
+  background-size: 400% 100%;
+  -webkit-animation: loading-background 1.4s ease infinite;
+  animation: loading-background 1.4s ease infinite;
+  width: 100%;
+  &.ceo-img {
+    &:after {
+      display: none !important;
+    }
+  }
+}
+.loading-bg-white {
+  min-height: 30px;
+  background-image: linear-gradient(90deg, #f8f8f8 25%, #e6e6e6 37%, #fff 63%);
+  background-size: 400% 100%;
+  -webkit-animation: loading-background 1.4s ease infinite;
+  animation: loading-background 1.4s ease infinite;
+  width: 100%;
+}
+
+.loading-btn {
+  height: 55px;
+  width: 150px;
+}
+.no-data-image img {
+  margin-top: 5px;
+}
+@keyframes loading-background {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .custom-container {
+    padding: 0 15px;
+  }
+  .mat-sidenav {
+    width: 100% !important;
+  }
+}
+
+//@include colors-bg-text;

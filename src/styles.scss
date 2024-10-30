@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+@import "assets/scss/base";
+
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+
+//@import '/node_modules/@angular/material/core/core-theme';
+
+// Plus imports for other components in your app.
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+} }
+
+@import 'ngx-toastr/toastr';

@@ -1,0 +1,66 @@
+<div class="custom-container mt-2" *ngIf="pageLoad">
+    <div class="row mb-2">
+        <div class="col-md-4 d-none d-md-flex mt-2">
+
+            <div class="d-flex justify-content-between align-items-start flex-wrap mb-4">
+                <div class="d-flex flex-column">
+                    <h1 class="font-22 font-md-24 font-weight-bold text-color-black mb-0">Process Localize</h1>
+                    <br />
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb p-0 border-0 mt-n2 mb-2">
+                            <li class="breadcrumb-item">
+                                <a routerLink="/dashboard/localize"
+                                    class="font-14 font-weight-medium">LocalizeMasterData</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <a class="font-14 font-weight-medium">Process Localize</a>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-center justify-content-center ">
+            <form [formGroup]="filterForm" *ngIf="pageLoad" class="form-inline">
+                <div class="row ">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Process Name</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>Process Name</mat-label>
+                            <label class="mat-form-content">
+                                <mat-select formControlName="prcKey">
+                                    <mat-option *ngFor="let data of processNameData" (click)="getProcessName(data.Name)"
+                                        [value]=data.Code>{{data.Name}}
+                                    </mat-option>
+                                </mat-select>
+                            </label>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group  mb-2 mt-4">
+                        <button (click)="processLocalizeData()" [disabled]="(filterForm.invalid||filterForm.untouched)"
+                            class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3 mt-3">
+                            <span>
+                                Fetch
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4 d-none d-md-flex justify-content-end mt-4 ">
+            <button [disabled]="isDisabled" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3 mt-3"
+                (click)="addProcess()">
+                <span>
+                    New Process Localize
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="general-box p-4">
+        <app-data-table [dataSource]="dataSource" [columnsdef]="columns" [addEditComponent]="addEditComponent"
+            [viewComponent]="" [apiUrl]="apiUrl" [rowKey]="rowKey" [transaction]="transaction"></app-data-table>
+    </div>
+
+</div>

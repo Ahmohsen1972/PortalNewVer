@@ -1,0 +1,67 @@
+<div class="custom-container">
+    <div class="my-5">
+        <h1 class="font-22 font-md-24 font-weight-bold text-color-black mb-0">{{staticTranslation['SetupOptions']}}</h1>
+        <h4 class="font-14 font-weight-medium text-color-gray mb-4">{{staticTranslation['chooseCategory']}}
+        </h4>
+
+        <div class="row">
+
+            <div class="col-md-4 mb-3" *ngFor="let module of modules">
+                <div *ngIf="module.menuId != 7  && module.menuId != 13 && module.menuId != 15 && module.menuId != 178"
+                    class="main-card p-4 mb-4 d-flex align-items-center" [queryParams]="{moduleName:module.description}"
+                    routerLink="{{module.modPagePath}}">
+                    <div class="icon p-3 p-md-4">
+                        <i class="{{module.modLogoClass}}"></i>
+                    </div>
+                    <span class="mx-3"></span>
+                    <div class="d-flex flex-column flex-grow-1">
+                        <span class="font-20 font-md-20 font-weight-semi-bold name">{{module.description}}</span>
+                        <div class="font-14 font-weight-medium">
+                            <span class="number" *ngIf="module.menuId == 12">{{countriesLength}}</span>
+                            <span class="number" *ngIf="module.menuId == 13">{{currenciesLength}}</span>
+                            <span class="number" *ngIf="module.menuId == 10">{{banksLength}}</span>
+                            <span class="number" *ngIf="module.menuId == 15">{{employersLength}}</span>
+                            <span class="number" *ngIf="module.menuId == 11">{{requiredDocsLength}}</span>
+                            <span class="number" *ngIf="module.menuId == 150">{{assetClassesLength}}</span>
+                            <span class="number" *ngIf="module.menuId == 162">{{customerServiceLettersLength}}</span>
+                            <span class="px-1 disc">{{module.description}}</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="main-card p-4 mb-4 d-flex align-items-center"
+                    (click)="openTerms(module.description , module.menuId)" *ngIf="module.menuId == 7">
+                    <div class="icon p-3 p-md-4">
+                        <i class="fi fi-list font-40 font-md-30"></i>
+                    </div>
+                    <span class="mx-3"></span>
+                    <div class="d-flex flex-column flex-grow-1">
+                        <span class="font-20 font-md-20 font-weight-semi-bold name">{{module.description}}</span>
+                        <div class="font-12 font-weight-medium">
+                            <span class="disc">{{staticTranslation['LastEdition']}} :</span>
+                            <span class="px-1 number">{{ithmaarPortalService.getDatePipeFormat(requestTermsConditionsUpdatedDate)}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-card p-4 mb-4 d-flex align-items-center"
+                    (click)="openTerms(module.description , module.menuId)" *ngIf="module.menuId == 178">
+                    <div class="icon p-3 p-md-4">
+                        <i class="fi fi-list font-40 font-md-30"></i>
+                    </div>
+                    <span class="mx-3"></span>
+                    <div class="d-flex flex-column flex-grow-1">
+                        <span class="font-20 font-md-20 font-weight-semi-bold name">{{module.description}}</span>
+                        <div class="font-12 font-weight-medium">
+                            <span class="disc">{{staticTranslation['LastEdition']}} :</span>
+                            <span class="px-1 number">{{ithmaarPortalService.getDatePipeFormat(termsConditionsUpdatedDate)}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

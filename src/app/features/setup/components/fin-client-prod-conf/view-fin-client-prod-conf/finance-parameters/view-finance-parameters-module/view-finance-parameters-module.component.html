@@ -1,0 +1,59 @@
+
+
+  <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+    <h2 class="font-33 font-md-24 font-weight-bold text-color-black">Required Document information</h2>
+    <!-- <button class="btn button-primary px-3 font-17 font-weight-md-medium" (click)="addNew()" *ngIf="status != 'view'">
+      <span>Add Address</span>
+    </button> -->
+  </div>
+  
+  <div class="info-section reverse" *ngIf="pageLoad">
+   
+    <div class="info-item" >
+      <span class="name">data Type</span>
+      <span class="disc">{{parameters?.dataTypeName}} </span>
+    </div>
+    
+    <div class="info-item" >
+      <span class="name">Asset Atttribte </span>
+      <span class="disc">{{parameters?.assetAtttribteDesc}} </span>
+    </div>
+      <div class="info-item" >
+        <span class="name">Local Name</span>
+        <span class="disc">{{parameters?.fcppLName}} </span>
+      </div>
+
+      <div class="info-item" >
+        <span class="name">Other Name</span>
+        <span class="disc">{{parameters?.fcppFName}} </span>
+      </div>
+
+      <div class="info-item" >
+        <span class="name">Value</span>
+        <span class="disc">{{parameters?.fccpValue}} </span>
+      </div>
+      
+      <div class="info-item" >
+        <span class="name">Maximum Value</span>
+        <span class="disc">{{parameters?.fcppMaxValue}} </span>
+      </div>
+      <div class="info-item" >
+          <span class="name">Minimum Value</span>
+          <span class="disc">{{parameters?.fcppMinValue}} </span>
+        </div>
+
+        <div class="info-item" >
+            <span class="name">Visible</span>
+            <span *ngIf="visible == 'T'" style='font-size:30px;'>&#10004;</span>
+            <span *ngIf="visible == 'F'" style='font-size:30px;'>&#10008;</span>
+          </div>
+
+          <div class="info-item" >
+            <span class="name">Required</span>
+            <span *ngIf="required == 'T'" style='font-size:30px;'>&#10004;</span>
+            <span *ngIf="required == 'F'" style='font-size:30px;'>&#10008;</span>
+          </div>
+
+   
+  </div>
+  

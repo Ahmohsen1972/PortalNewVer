@@ -1,0 +1,106 @@
+<div class="popup-container" *ngIf="pageLoad">
+    <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+        <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">{{data.status == 'create'? 'Add':'Edit'}} Module
+            Attributes </h3>
+        <button class="mat-close-modal" matDialogClose>
+            <i class="fi fi-close font-18"></i>
+        </button>
+    </div>
+
+    <mat-dialog-content>
+
+
+        <div class="p-3">
+            <form [formGroup]="modAttForm">
+                <div class="row">
+
+                    <div class="col-12 mb-3">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Name</label>
+                        <mat-form-field class="primary-form font-17" *ngIf="data.status!='create'">
+                            <mat-label>Name</mat-label>
+                            <label class="mat-form-content">
+                                <input formControlName="maLocalName" matInput placeholder="maLocalName" />
+                            </label>
+                        </mat-form-field>
+
+                        <mat-form-field class="primary-form font-17" *ngIf="data.status=='create'">
+                            <mat-label>Name</mat-label>
+                            <label class="mat-form-content">
+                                <mat-select formControlName="maKey">
+                                    <mat-option *ngFor="let data of modAttributesNamesData " [value]="data.maKey">
+                                        {{data.maLocalName}}
+                                    </mat-option>
+                                </mat-select>
+                            </label>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- dropdown -->
+                    <div class="col-12 mb-4">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Enabled</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>Enabled</mat-label>
+                            <label class="mat-form-content">
+                                <mat-select formControlName="apsEnabled">
+                                    <mat-option *ngFor="let opt of apsEnabledData " [value]="opt.value">
+                                        {{opt.label}}
+                                    </mat-option>
+                                </mat-select>
+                            </label>
+                        </mat-form-field>
+
+                    </div>
+
+                    <!-- dropdown -->
+                    <div class="col-12 mb-4">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Required</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>Required</mat-label>
+                            <label class="mat-form-content">
+                                <mat-select formControlName="apsRequired">
+                                    <mat-option *ngFor="let opt of apsRequiredData " [value]="opt.value">
+                                        {{opt.label}}
+
+                                    </mat-option>
+                                </mat-select>
+
+                            </label>
+                        </mat-form-field>
+
+                    </div>
+
+                    <!-- dropdown -->
+                    <div class="col-12 mb-4">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Visible</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>Visible</mat-label>
+                            <label class="mat-form-content">
+                                <mat-select formControlName="apsVisible">
+                                    <mat-option *ngFor="let opt of apsVisibleData " [value]="opt.value">
+                                        {{opt.label}}
+                                    </mat-option>
+                                </mat-select>
+                            </label>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </mat-dialog-content>
+
+    <div class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+        <button class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+            <span>Dismiss</span>
+        </button>
+        <span class="mx-2"></span>
+        <button (click)="onSubmit()" [class.disabled]="isDisabled"
+            class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+            <span>
+                {{btnAction}}
+            </span>
+        </button>
+    </div>
+
+</div>

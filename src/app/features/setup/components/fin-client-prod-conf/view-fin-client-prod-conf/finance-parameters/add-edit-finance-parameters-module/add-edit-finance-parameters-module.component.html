@@ -1,0 +1,216 @@
+
+
+
+<div class="popup-container"  *ngIf="pageLoad">
+    <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+        <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">{{dataStatus.action === 'create'? 'Add':'Edit'}}  Parameters  </h3>
+        <button class="mat-close-modal" matDialogClose>
+            <i class="fi fi-close font-18"></i>
+        </button>
+    </div>
+  
+    <mat-dialog-content>
+  
+  
+        <div class="p-3">
+            <form [formGroup]="productParamsForm">
+                <div class="row">
+
+                    <div class="col-12 mb-3" >
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Data Type </label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>Data Type</mat-label>
+                            <label class="mat-form-content">
+                    <mat-select formControlName="fcppDataType">
+                      <mat-option *ngFor="let opt of dataTypes" [value]="opt.rvLowValue">
+                        {{opt.rvMeaning}} 
+                      </mat-option>
+                    </mat-select>
+                  </label>
+                        </mat-form-field>
+                    </div>
+
+
+                    <!-- <div class="col-12 mb-4" >
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Data Type
+                            
+                        </label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>Data Type</mat-label>
+                            <mat-icon matPrefix><i class="fi fi-search"></i> </mat-icon>
+                            <label class="mat-form-content">
+                                <input type="text"  matInput
+                                formControlName="dataTypeName" [matAutocomplete]="auto">
+                            </label>
+                            <mat-autocomplete #auto="matAutocomplete"  (optionSelected)="ondataTypesSelection($event)">
+                                <mat-option *ngFor="let opt of dataTypesFilteredOptions | async" value="{{opt.rvMeaning }}">
+            
+                                  {{opt.rvMeaning}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div> -->
+
+                    <div class="col-12 mb-4" >
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Atttribte Name
+                            
+                        </label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>Atttribte Name</mat-label>
+                            <mat-icon matPrefix><i class="fi fi-search"></i> </mat-icon>
+                            <label class="mat-form-content">
+                                <input type="text"  matInput
+                                formControlName="assetAtttribteDesc" [matAutocomplete]="auto2">
+                            </label>
+                            <mat-autocomplete #auto2="matAutocomplete"  (optionSelected)="onAttributeNamesSelection($event)">
+                                <mat-option *ngFor="let opt of attributeNamesFilteredOptions | async" value="{{opt.localName }}">
+            
+                                  {{opt.localName}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
+
+                   
+
+                      <div class="col-12 mb-4">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Local Name</label>
+                        <mat-form-field class="primary-form font-17">
+                         <mat-label>Local Name</mat-label>
+                          <label class="mat-form-content">
+                            <input type="text" matInput placeholder="Local Name" formControlName="fcppLName" />
+                          </label>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-12 mb-4">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Other Name</label>
+                        <mat-form-field class="primary-form font-17">
+                         <mat-label>Other Name</mat-label>
+                          <label class="mat-form-content">
+                            <input type="text" matInput placeholder="Other Name" formControlName="fcppFName" />
+                          </label>
+                        </mat-form-field>
+                      </div>
+
+                      <div class="col-12 mb-4">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Value</label>
+                        <mat-form-field class="primary-form font-17">
+                         <mat-label>Value</mat-label>
+                          <label class="mat-form-content">
+                            <input type="text" matInput placeholder="Value" formControlName="fccpValue" />
+                          </label>
+                        </mat-form-field>
+                      </div>
+
+                      <div class="col-12 mb-4">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Maximum Value</label>
+                        <mat-form-field class="primary-form font-17">
+                         <mat-label>Maximum Value</mat-label>
+                          <label class="mat-form-content">
+                            <input type="number" matInput placeholder="Maximum Value" formControlName="fcppMaxValue" />
+                          </label>
+                        </mat-form-field>
+                      </div>
+
+
+                      <div class="col-12 mb-4">
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Minimum Value</label>
+                        <mat-form-field class="primary-form font-17">
+                         <mat-label>Minimum Value</mat-label>
+                          <label class="mat-form-content">
+                            <input type="number" matInput placeholder="Minimum Value" formControlName="fcppMinValue" />
+                          </label>
+                        </mat-form-field>
+                      </div>
+
+
+                    <div class="col-12 mb-3" >
+                        <mat-label>Required</mat-label>
+                            <br>
+                        <mat-checkbox [(ngModel)]="checkedRequired" [ngModelOptions]="{standalone: true}"><span class="font-17 font-weight-semi-bold text-color-black"> </span></mat-checkbox>
+                      </div>
+
+                      <div class="col-12 mb-3" >
+                        <mat-label>Visible</mat-label>
+                            <br>
+                        <mat-checkbox [(ngModel)]="checkedVisible" [ngModelOptions]="{standalone: true}"><span class="font-17 font-weight-semi-bold text-color-black"> </span></mat-checkbox>
+                      </div>
+
+                    <!-- <div class="col-12 mb-4" >
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Module
+                            
+                        </label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>Module</mat-label>
+                            <mat-icon matPrefix><i class="fi fi-search"></i> </mat-icon>
+                            <label class="mat-form-content">
+                                <input type="text"  matInput
+                                formControlName="modLocalName" [disabled]="!dependentLov" [matAutocomplete]="auto2">
+                            </label>
+                            <mat-autocomplete #auto2="matAutocomplete"  (optionSelected)="onModuleSelection($event)">
+                                <mat-option *ngFor="let opt of modulesFilteredOptions | async" value="{{opt.modLocalName }}">
+            
+                                  {{opt.modLocalName}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div> -->
+
+                    <!-- <div class="col-12 mb-3" >
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Role </label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>Role</mat-label>
+                            <label class="mat-form-content">
+                    <mat-select formControlName="rolKey">
+                      <mat-option *ngFor="let rol of roles" (click)="getModKey(rol.rolKey)"[value]="rol.rolKey">
+                        {{rol.rolLocalName}}
+                      </mat-option>
+                    </mat-select>
+                  </label>
+                        </mat-form-field>
+                    </div>
+ 
+                    <div class="col-12 mb-3" >
+                        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Module </label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>Module</mat-label>
+                            <label class="mat-form-content">
+                    <mat-select formControlName="modKey"[disabled]="!dependentLov">
+                      <mat-option *ngFor="let module of modules" [value]="module.modKey">
+                        {{module.modLocalName}}
+                      </mat-option>
+                    </mat-select>
+                  </label>
+                        </mat-form-field>
+                    </div> 
+
+ -->
+
+
+
+            
+
+  
+                </div>
+            </form>
+  
+        </div>
+  
+    </mat-dialog-content>
+  
+    <div class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+        <button class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+            <span> Dismiss </span>
+        </button>
+        <span class="mx-2"></span>
+        <!-- -->
+        <button (click)="onSubmitProductParams()"[disabled]="productParamsForm.invalid" 
+            class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+            <span>
+                {{btnAction}}
+
+            </span>
+        </button>
+    </div>
+  
+  </div>

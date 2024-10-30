@@ -1,0 +1,138 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+    <h2 class="font-33 font-md-24 font-weight-bold text-color-black">Flex Field Setup</h2>
+</div>
+
+
+<form [formGroup]="flexFieldSetupForm" *ngIf="pageLoad">
+    <div class="p-3">
+        <div class="row">
+
+
+            <div class="row">
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Module Caption</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="modLocalName" matInput placeholder="Module Caption" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Attribute Name</label>
+                <mat-form-field class="primary-form font-17">
+                    <label class="mat-form-content">
+                        <input formControlName="maLocalName" matInput placeholder="Attribute Name" />
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Control Type</label>
+                <mat-form-field class="primary-form font-17">
+                    <mat-label>{{flexFieldData.maSourceType==''?'Control Type':flexFieldData.maSourceType=='D'?'Drop Down List' : 'Text Field'}}</mat-label>
+                    <label class="mat-form-content">
+                        <mat-select formControlName="maSourceType">
+                            <mat-option *ngFor="let data of controlTypeData" [value]=data.value>{{data.label}}
+                            </mat-option>
+                        </mat-select>
+                    </label>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Data Type</label>
+                <mat-form-field class="primary-form font-17">
+                    <mat-label>{{flexFieldData.maDataType=='Z'?'Date' : flexFieldData.maDataType=='C'?'Text':'Number'}}</mat-label>
+                    <label class="mat-form-content">
+                        <mat-select formControlName="maDataType">
+                            <mat-option *ngFor="let data of dataTypeData" [value]=data.value>{{data.label}}
+                            </mat-option>
+                        </mat-select>
+                    </label>
+                </mat-form-field>
+            </div>
+
+           
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Visible</label>
+                <mat-form-field class="primary-form font-17">
+                    <mat-label>{{flexFieldData.maVisible=='T'?'True' : 'False'}}</mat-label>
+                    <label class="mat-form-content">
+                        <mat-select formControlName="maVisible">
+                            <mat-option *ngFor="let data of trueAndFalseData" [value]=data.value>{{data.label}}
+                            </mat-option>
+                        </mat-select>
+                    </label>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Enabled</label>
+                <mat-form-field class="primary-form font-17">
+                    <mat-label>{{flexFieldData.maEnabled=='T'?'True' : 'False'}}</mat-label>
+                    <label class="mat-form-content">
+                        <mat-select formControlName="maEnabled">
+                            <mat-option *ngFor="let data of trueAndFalseData" [value]=data.value>{{data.label}}
+                            </mat-option>
+                        </mat-select>
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+
+           
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Required</label>
+                <mat-form-field class="primary-form font-17">
+                    <mat-label>{{flexFieldData.maRequired=='T'?'True' : 'False'}}</mat-label>
+                    <label class="mat-form-content">
+                        <mat-select formControlName="maRequired">
+                            <mat-option *ngFor="let data of trueAndFalseData" [value]=data.value>{{data.label}}
+                            </mat-option>
+                        </mat-select>
+                    </label>
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+
+        </div>
+    </div>
+</form>
+
+
+<div *ngIf="status!='view' " class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+    <button (click)="resetForm()" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3"
+        matDialogClose>
+        <span>Dismiss</span>
+    </button>
+    <span class="mx-2"></span>
+    <button (click)="onSubmit()" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+        <span>
+            Update
+        </span>
+    </button>
+</div>

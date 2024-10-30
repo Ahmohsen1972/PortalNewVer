@@ -1,0 +1,124 @@
+<div class="popup-container" *ngIf="pageLoad">
+  <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+    <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">{{dataStatus.status === 'create'? 'Add':'Edit'}} Finance
+      Product </h3>
+    <!-- <button class="mat-close-modal" matDialogClose>
+            <i class="fi fi-close font-18"></i>
+        </button> -->
+  </div>
+
+  <mat-dialog-content>
+
+
+    <div class="p-3">
+      <form [formGroup]="financeProductModuleForm">
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Local Name </label>
+            <mat-form-field class="primary-form font-17">
+              <mat-label>Local Name</mat-label>
+              <label class="mat-form-content">
+                <input formControlName="fnpLName" matInput placeholder="Local Name" />
+              </label>
+            </mat-form-field>
+          </div>
+
+
+          <div class="col-md-12 mb-3">
+            <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Other Name </label>
+            <mat-form-field class="primary-form font-17">
+              <mat-label>fnpFName</mat-label>
+              <label class="mat-form-content">
+                <input formControlName="fnpFName" matInput placeholder="Other Name" />
+              </label>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Icon Path </label>
+            <mat-form-field class="primary-form font-17">
+              <mat-label>fnpIconPath</mat-label>
+              <label class="mat-form-content">
+                <input formControlName="fnpIconPath" matInput placeholder="Icon Path" />
+              </label>
+            </mat-form-field>
+          </div>
+
+
+          <div class="col-md-12 mb-3">
+            <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Description </label>
+            <mat-form-field class="primary-form font-17">
+              <mat-label>fnpDescription</mat-label>
+              <label class="mat-form-content">
+                <input formControlName="fnpDescription" matInput placeholder="Description" />
+              </label>
+            </mat-form-field>
+          </div>
+
+
+
+
+
+
+
+          <div class="col-md-12 h-25  mb-1">
+            <label class="font-17 font-weight-medium text-color-dark-gray mb-1">English Required Docuemnt </label>
+            <quill-editor formControlName="fnpLRequiredDocuemnts"></quill-editor>
+            <br />
+
+            <br />
+          </div>
+          <br />
+
+          <div class="col-md-12 h-25  mb-1">
+            <label class="font-17 font-weight-medium text-color-dark-gray mb-1">Arabic Required Docuemnt </label>
+            <quill-editor formControlName="fnpFRequiredDocuemnts"></quill-editor>
+            <br />
+
+            <br />
+          </div>
+          <br />
+
+
+          <div class="col-md-12 h-25  mb-1">
+            <label class="font-17 font-weight-medium text-color-dark-gray mb-1">English terms and condition </label>
+            <quill-editor formControlName="fnpLTermsConditions"></quill-editor>
+            <br />
+
+            <br />
+          </div>
+          <br />
+
+
+          <div class="col-md-12 h-25  mb-1">
+            <label class="font-17 font-weight-medium text-color-dark-gray mb-1">Arabic terms and condition</label>
+            <quill-editor formControlName="fnpFTermsConditions"></quill-editor>
+            <br />
+
+            <br />
+          </div>
+
+
+        </div>
+      </form>
+
+    </div>
+
+  </mat-dialog-content>
+
+  <div class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+    <button class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+      <span> Dismiss </span>
+    </button>
+    <span class="mx-2"></span>
+    <!-- [disabled]="financeProductModuleForm.invalid"-->
+    <button (click)="onSubmitAssetAtt()" [disabled]="financeProductModuleForm.invalid"
+      class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+      <span>
+        {{btnAction}}
+
+      </span>
+    </button>
+  </div>
+
+</div>

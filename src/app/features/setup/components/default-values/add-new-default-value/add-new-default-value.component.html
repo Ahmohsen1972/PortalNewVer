@@ -1,0 +1,93 @@
+<form [formGroup]="defaultValueForm" (ngSubmit)="onSubmit()" *ngIf="pageLoad">
+  <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+    <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">New Default Value</h3>
+    <button class="mat-close-modal" matDialogClose>
+      <i class="fi fi-close font-18"></i>
+    </button>
+  </div>
+
+  <mat-dialog-content class="h-100 border-top pt-3">
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Finance Concept</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{actionBtn=='Update'?defaultValueObj.rovsFinanceConceptName:'Finance Concept'}}</mat-label>
+        <label class="mat-form-content">
+          <mat-select class="form-control" formControlName="rovsFinanceConcept">
+            <mat-option *ngFor="let data of financeConceptData" [value]="data.rvLowValue">{{data.rvMeaning}}
+            </mat-option>
+          </mat-select>
+        </label>
+      </mat-form-field>
+    </div>
+
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Profit Rate</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Profit Rate</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="Profit Rate" formControlName="rovsProfitRate" />
+
+        </label>
+      </mat-form-field>
+    </div>
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Down Payment %</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Down Payment %</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="Down Payment %" formControlName="rovsDownPaymentPercentage" />
+
+        </label>
+      </mat-form-field>
+    </div>
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Grace Days</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Grace Days</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="Grace Days" formControlName="rovsGraceDays" />
+
+        </label>
+      </mat-form-field>
+    </div>
+
+
+
+
+
+    <div class="col-12 mb-4">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Tenure</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>Tenure</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="Tenure" formControlName="rovsTenure" />
+
+        </label>
+      </mat-form-field>
+    </div>
+
+  </mat-dialog-content>
+
+
+  <div class="d-flex align-items-center justify-content-center">
+    <button type="button" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+      <span>Dismiss</span>
+    </button>
+    <span class="mx-2"></span>
+    <button type="submit" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3"
+      [class.disabled]="isDisabled">
+      <span>
+        {{actionBtn}}
+      </span>
+    </button>
+  </div>
+
+</form>

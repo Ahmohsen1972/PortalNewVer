@@ -1,0 +1,85 @@
+<h1 class="mb-0 font-50 text-success title-text font-md-50 font-weight-bold" *ngIf="data.title == 'confirm-success-payment'"   >
+  {{staticTranslation['Success']}}</h1>
+
+  <h1 class="mb-0 font-50 text-danger title-text font-md-50 font-weight-bold" *ngIf="data.title == 'confirm-fail-payment'"   >
+    {{staticTranslation['Fail']}}</h1>
+
+    <h3 class="mb-0 font-30 font-md-30 font-weight-semi-bold" *ngIf="data.title == 'confirm-fail-payment'" >
+      {{staticTranslation['tryAgain']}}</h3>
+<mat-dialog-content class="h-100 border-0">
+  <div class="d-flex align-items-center justify-content-between mb-0" mat-dialog-title *ngIf="data.title == 'error'">
+    <h1><i class="fa fa-exclamation-triangle font-45 text-color-dark-red"></i></h1>
+    <button class="mat-close-modal" matDialogClose>
+      <i class="fi fi-close font-18"></i>
+    </button>
+  </div>
+
+
+
+  <h3 class="mb-0 font-20 font-md-20 title-text font-weight-semi-bold" *ngIf="data.title == 'error'" >
+    {{staticTranslation['Error']}}</h3>
+  
+  
+
+  <h2 class="font-20 font-weight-bold text-color-onyx  mb-3" *ngIf="data.title == 'confirm'">
+    {{data.message}}
+  </h2>
+  <span class="font-20 font-md-19 text-color-dark-gray " *ngIf="data.title == 'error'">
+    <div [innerText]="data.message">
+    </div>  
+  </span>
+  <div class="info-section reverse" *ngIf="data.title=='confirm-success-payment'||data.title=='confirm-fail-payment'">
+     <div class="info-item">
+        <span class="name">{{staticTranslation['name']}}</span>
+        <span class="disc">{{data?.name}} </span>
+      </div> 
+      <div class="info-item">
+        <span class="name">{{staticTranslation['date']}}</span>
+        <span class="disc">{{getPaymentDateFormat()}}</span>
+      </div> 
+      <div class="info-item">
+        <span class="name">{{staticTranslation['amount']}}</span>
+        <span class="disc">{{data?.amount}}</span>
+      </div> 
+      <div class="info-item">
+        <span class="name">{{staticTranslation['status']}}</span>
+        <span class="disc text-success" *ngIf="data.title == 'confirm-success-payment'">{{data?.status}}</span>
+        <span class="disc text-danger" *ngIf="data.title == 'confirm-fail-payment'">{{data?.status}}</span>
+      </div> 
+      <div class="info-item">
+        <span class="name">{{staticTranslation['paymentId']}}</span>
+        <span class="disc">{{data?.paymentId}}</span>
+      </div> 
+      <div class="info-item">
+        <span class="name">{{staticTranslation['transactionId']}}</span>
+        <span class="disc">{{data?.transactionId}}</span>
+      </div> 
+      <div class="info-item">
+        <span class="name">{{staticTranslation['referenceId']}}</span>
+        <span class="disc">{{data?.referenceId}}</span>
+      </div> 
+      <div class="info-item" *ngIf="data.title=='confirm-fail-payment'">
+        <span class="name">{{staticTranslation['reason']}}</span>
+        <span class="disc">{{data?.reason}}</span>
+      </div>   
+  </div>
+
+ 
+
+
+</mat-dialog-content>
+
+<div class="d-flex align-items-center justify-content-center mb-4 px-3 mx-0 px-md-5 mx-md-5"
+  *ngIf="data.title != 'error'">
+  <button *ngIf="data.title == 'confirm'" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+    <span> {{staticTranslation['cancel']}}</span>
+  </button>
+  <span class="mx-2"></span>
+
+  <button class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3 " (click)="okAction()" matDialogClose>
+    <span>
+      <mat-spinner *ngIf="false" class="spinner"></mat-spinner>
+      <span> {{staticTranslation['Ok']}}</span>
+    </span>
+  </button>
+</div>

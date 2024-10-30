@@ -1,0 +1,60 @@
+<form [formGroup]="employerForm" (ngSubmit)="onSubmit()" *ngIf="pageLoad">
+  <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+    <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">{{staticTranslation['NewEmployer']}}</h3>
+    <button class="mat-close-modal" matDialogClose>
+      <i class="fi fi-close font-18"></i>
+    </button>
+  </div>
+
+  <mat-dialog-content class="h-100 border-top pt-3">
+    <div class="col-12 mb-4" *ngIf="probertyData['weCode']['apsVisible'] == 'T'">
+      <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center"><i
+          class="devicons devicons-code"></i>{{probertyData['weCode']['ahdCaption']}}</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{probertyData['weCode']['ahdCaption']}}</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="{{probertyData['weCode']['ahdCaption']}}"
+            formControlName="employerCode" />
+
+        </label>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mb-4" *ngIf="probertyData['weLocalName']['apsVisible'] == 'T'">
+      <label
+        class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['weLocalName']['ahdCaption']}}</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{probertyData['weLocalName']['ahdCaption']}}</mat-label>
+        <label class="mat-form-content">
+          <input type="text" matInput placeholder="{{probertyData['weLocalName']['ahdCaption']}}"
+            formControlName="employerLName" />
+
+        </label>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 mb-4" *ngIf="probertyData['weForeignName']['apsVisible'] == 'T'">
+      <label
+        class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['weForeignName']['ahdCaption']}}</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{probertyData['weForeignName']['ahdCaption']}}</mat-label>
+        <label class="mat-form-content">
+
+          <input matInput placeholder="{{probertyData['weForeignName']['ahdCaption']}}" formControlName="employerFName">
+        </label>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <div class="d-flex align-items-center justify-content-center">
+    <button type="button" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+      <span>{{staticTranslation['dismiss']}}</span>
+    </button>
+    <span class="mx-2"></span>
+    <button type="submit" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+      <span>
+        {{staticTranslation['save']}}
+      </span>
+    </button>
+  </div>
+
+</form>

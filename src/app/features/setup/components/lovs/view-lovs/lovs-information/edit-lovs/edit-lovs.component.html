@@ -1,0 +1,121 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+  <h2 class="font-33 font-md-24 font-weight-bold text-color-black">Lov</h2>
+</div>
+
+
+<form [formGroup]="lovForm" *ngIf="pageLoad">
+  <div class="p-3">
+    <div class="row">
+
+      <!--Update Case-->
+      <div class="col-md-12 mb-3" *ngIf="status!='view' ">
+
+        <div class="col-12 mb-4">
+          <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center disabled">Name</label>
+          <mat-form-field class="primary-form font-17">
+            <mat-label>Name</mat-label>
+            <label class="mat-form-content">
+              <input type="text" matInput placeholder="Name" formControlName="lovName" />
+            </label>
+          </mat-form-field>
+        </div>
+
+
+        <div class="col-12 mb-4">
+          <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Domain</label>
+          <mat-form-field class="primary-form font-17">
+            <mat-label>Domain</mat-label>
+            <label class="mat-form-content">
+              <mat-select formControlName="rvKey">
+                <mat-option *ngFor="let data of domainNameData" [value]="data.rvKey">{{data.rvDomain}}</mat-option>
+              </mat-select>
+            </label>
+          </mat-form-field>
+        </div>
+
+
+        <div class="col-12 mb-4">
+          <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Query</label>
+          <mat-form-field class="primary-form font-17">
+            <mat-label>Query</mat-label>
+            <label class="mat-form-content">
+              <input type="text" matInput placeholder="Query" formControlName="lovQuery" />
+            </label>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 mb-4" *ngIf=false>
+          <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Type</label>
+          <mat-form-field class="primary-form font-17">
+            <mat-label>Type</mat-label>
+            <label class="mat-form-content">
+              <mat-select formControlName="lovType">
+                <mat-option *ngFor="let data of lovTypeData" [value]=data.rvLowValue>{{data.rvMeaning}}</mat-option>
+              </mat-select>
+            </label>
+          </mat-form-field>
+        </div>
+
+
+
+        <div class="col-12 mb-4">
+          <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Validation</label>
+
+          <div class="col-12 mb-3">
+            <mat-checkbox [(ngModel)]="isChecked" [ngModelOptions]="{standalone: true}"><span
+                class="font-17 font-weight-semi-bold text-color-black"> </span></mat-checkbox>
+          </div>
+        </div>
+
+
+      </div>
+
+      <!--View Case-->
+      <div class="col-md-12 mb-3" *ngIf="status=='view' ">
+        <div class="info-section reverse" *ngIf="pageLoad">
+          <div class="info-item">
+            <span class="name">Name</span>
+            <span class="disc">{{lovData?.lovName}} </span>
+          </div>
+
+          <div class="info-item">
+            <span class="name">Query</span>
+            <span class="disc">{{lovData?.lovQuery}} </span>
+          </div>
+
+          <div class="info-item">
+            <span class="name">Type</span>
+            <span class="disc">{{lovData?.lovType}} </span>
+          </div>
+
+          <div class="info-item">
+            <span class="name">Domain</span>
+            <span class="disc">{{lovData?.rvDomain}} </span>
+          </div>
+
+          <div class="info-item">
+            <span class="name">Validation</span>
+            <span class="disc">{{lovData?.lovIsValid}} </span>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!--Update Buttons-->
+<div *ngIf="status!='view' " class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+  <button (click)="resetForm()" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3"
+    matDialogClose>
+    <span>Dismiss</span>
+  </button>
+  <span class="mx-2"></span>
+  <button (click)="onSubmitLovInfo()" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3"
+    [class.disabled]="isDisabled">
+    <span>
+      Update
+    </span>
+  </button>
+</div>

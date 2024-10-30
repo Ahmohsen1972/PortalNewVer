@@ -1,0 +1,113 @@
+.badge{
+  border-radius: 4px;
+  padding: 0 5px;
+  line-height: 1.5;
+  //font-size: 100%;
+  min-width: 25px;
+  height: 25px;
+  display: inline-flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  &.small{
+    min-width: 20px;
+    height: 20px;
+    border-radius: 3px;
+  }
+  &.medium{
+    min-width: 34px;
+    height: 34px;
+    border-radius: 3px;
+    padding: 0 10px;
+  }
+
+  &.big{
+    min-width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    padding: 0 10px;
+  }
+
+  &.bigger{
+    min-width: 55px;
+    height: 50px;
+    border-radius: 5px;
+    padding: 0 10px;
+  }
+  &.bg-color-blue{
+    background-color: $blue !important;
+    color: $white;
+    &.status{
+      border: 1px solid $blue;
+    }
+  }
+  &.bg-color-blue-opacity{
+    background-color: rgba($blue,.1) !important;
+    color: $blue;
+    &.status{
+      border: 1px solid $blue;
+    }
+  }
+  &.bg-color-yellow{
+    background-color: $yellow !important;
+    color: $white;
+    &.status{
+      border: 1px solid $yellow;
+    }
+  }
+  &.bg-color-yellow-opacity{
+    background-color: rgba($yellow,.1) !important;
+    color: $yellow;
+    &.status{
+      border: 1px solid $yellow;
+    }
+  }
+  &.bg-color-red{
+    background-color: $red !important;
+    color: $white;
+    &.status{
+      border: 1px solid $red;
+    }
+  }
+  &.bg-color-red-opacity{
+    background-color: rgba($red,.1) !important;
+    color: $red;
+    &.status{
+      border: 1px solid $red;
+    }
+  }
+  &.bg-color-green{
+    background-color: $green !important;
+    color: $white;
+    &.status{
+      border: 1px solid $green;
+    }
+  }
+  &.bg-color-green-opacity{
+    background-color: rgba($green,.1) !important;
+    color: $green;
+    &.status{
+      border: 1px solid $green;
+    }
+  }
+  &.bg-color-sky-blue{
+    background-color: $sky-blue !important;
+    color: $white;
+    &.status{
+      border: 1px solid $sky-blue;
+    }
+  }
+  &.bg-color-sky-blue-opacity{
+    background-color: rgba($sky-blue,.1) !important;
+    color: $sky-blue;
+    &.status{
+      border: 1px solid $sky-blue;
+    }
+  }
+}
+
+
+
+
+
+

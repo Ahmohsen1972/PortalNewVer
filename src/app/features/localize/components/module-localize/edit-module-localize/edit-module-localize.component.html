@@ -1,0 +1,77 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+  <h2 class="font-33 font-md-24 font-weight-bold text-color-black">Module Localize</h2>
+</div>
+
+<form [formGroup]="moduleLocalizeForm">
+  <div class="p-3">
+    <div class="row">
+
+      <mat-dialog-content class="h-100 border-top pt-3">
+        <div class="col-12 mb-2">
+          <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Parent Module</label>
+          <mat-form-field class="primary-form font-17">
+            <mat-label>Parent Module</mat-label>
+            <label class="mat-form-content">
+              <input type="text" matInput placeholder="Parent Module" formControlName="parentModuleLocalName" />
+            </label>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 mb-2">
+          <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center "> Module</label>
+          <mat-form-field class="primary-form font-17">
+            <mat-label> Module</mat-label>
+            <label class="mat-form-content">
+              <input type="text" matInput placeholder=" Module" formControlName="moduleLocalName" class="disabled" />
+            </label>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 mb-2">
+          <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center "> Language</label>
+          <mat-form-field class="primary-form font-17">
+            <mat-label> Language</mat-label>
+            <label class="mat-form-content">
+              <input type="text" matInput placeholder=" Language" formControlName="langShortName" />
+            </label>
+          </mat-form-field>
+        </div>
+
+
+
+        <div class="col-12 mb-2">
+          <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Caption</label>
+          <mat-form-field class="primary-form font-17">
+            <mat-label>Caption</mat-label>
+            <label class="mat-form-content">
+              <input type="text" matInput placeholder="Caption" formControlName="mlCaption" />
+            </label>
+          </mat-form-field>
+        </div>
+
+      </mat-dialog-content>
+
+    </div>
+
+
+
+  </div>
+
+
+</form>
+
+
+<div class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+  <button (click)="resetForm()" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3"
+    matDialogClose>
+    <span>Dismiss</span>
+  </button>
+  <span class="mx-2"></span>
+  <button (click)="onSubmitAttributeDetails()" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+    <span>
+      Update
+    </span>
+  </button>
+</div>
+
+<!-- </div> -->

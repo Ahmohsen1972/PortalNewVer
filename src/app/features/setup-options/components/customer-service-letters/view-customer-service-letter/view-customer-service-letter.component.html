@@ -1,0 +1,27 @@
+<div class="d-flex align-items-center justify-content-end" mat-dialog-title>
+  <button class="mat-close-modal" matDialogClose>
+    <i class="fi fi-close font-18"></i>
+  </button>
+</div>
+
+<mat-dialog-content class="h-100 border-0 pt-0 mt-n5" *ngIf="pageLoad">
+  <div class="px-md-4">
+
+    <div class="info-section reverse">
+      <div class="info-item" *ngIf="probertyData['cslCode']['apsVisible'] == 'T'">
+        <span class="name">{{probertyData['cslCode']['ahdCaption']}}</span>
+        <span class="disc">{{customerServiceLetterData.cslCode}}</span>
+      </div>
+      <div class="info-item" *ngIf="probertyData['cslLocalName']['apsVisible'] == 'T'">
+        <span class="name">{{probertyData['cslLocalName']['ahdCaption']}}</span>
+        <span class="disc">{{customerServiceLetterData.cslLocalName}} </span>
+      </div>
+      <div class="info-item" *ngIf="probertyData['active']['apsVisible'] == 'T'">
+        <span class="name">{{probertyData['active']['ahdCaption']}}</span>
+        <span class="disc" *ngIf="customerServiceLetterData.active == 'T'">&#10004;</span>
+        <span class="disc" *ngIf="customerServiceLetterData.active == 'F'">&#10006;</span>
+      </div>
+
+    </div>
+  </div>
+</mat-dialog-content>

@@ -1,0 +1,22 @@
+<mat-dialog-content class="h-100 pt-3 border-0">
+  <h2 class="font-20 font-weight-bold text-color-onyx text-center mb-3">
+    {{staticTranslation['deleteQuestion']}}
+  </h2>
+  <p class="font-20 font-md-19 text-color-dark-gray text-center">
+    {{staticTranslation['deleteWarning']}}
+  </p>
+</mat-dialog-content>
+
+<div class="d-flex align-items-center justify-content-center mb-4 px-3 mx-0 px-md-5 mx-md-5">
+  <button class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+    <span> {{staticTranslation['cancel']}}</span>
+  </button>
+  <span class="mx-2"></span>
+
+  <button  class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3 " (click)="confirmDelete()" matDialogClose>
+    <span>
+      <mat-spinner *ngIf="false" class="spinner"></mat-spinner>
+      <span> {{staticTranslation['delete']}}</span>
+    </span>
+  </button>
+</div>

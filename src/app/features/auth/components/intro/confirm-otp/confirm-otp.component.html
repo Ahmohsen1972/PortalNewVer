@@ -1,0 +1,78 @@
+<div class="p-md-5 m-md-5">
+
+    <div class="row">
+        <div class="col-xl-9">
+
+            <div class="d-flex align-items-center cursor-pointer" routerLink="/register">
+
+
+                <button class="square-btn gray-btn">
+
+                    <span *ngIf="lang == 'AR'">
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </span>
+                    <span *ngIf="lang == 'EN'">
+                        <mat-icon>keyboard_arrow_left</mat-icon>
+                    </span>
+                </button>
+
+                <span class="font-20 text-color-blue mx-3"> {{staticTranslation['back']}}</span>
+            </div>
+            <h1 class="font-45 font-weight-bolder text-color-black mt-2 mb-3 line-height-1">
+                {{staticTranslation['verifyMsg']}}</h1>
+
+                <div class="text-danger" *ngIf="countDownVisible" >
+                    <h2 id="countdown" >{{counter}}</h2>
+                    </div>
+
+            <form [formGroup]="verificationForm" *ngIf="pageLoad">
+                <div class="row">
+                    <div class="col-md-9 mb-3">
+                        <label
+                            class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{staticTranslation['enter']}}
+                            {{probertyData['verificationCode']['ahdCaption']}}</label>
+                        <mat-form-field class="primary-form font-17">
+                            <mat-label>{{staticTranslation['enter']}} {{probertyData['verificationCode']['ahdCaption']}}
+                            </mat-label>
+                            <label class="mat-form-content">
+                                <input matInput type="number"
+                                    placeholder="{{staticTranslation['enter']}} {{probertyData['verificationCode']['ahdCaption']}}"
+                                    formControlName="verificationCode">
+                            </label>
+                           
+                        </mat-form-field>
+                        <div *ngIf="verificationForm.controls['verificationCode'].errors &&
+            verificationForm.controls['verificationCode'].errors['required'] && 
+            verificationForm.controls['verificationCode'].touched" class="text-danger">
+
+                            {{probertyData['verificationCode']['ahdCaption']}} {{staticTranslation['isRequired']}}.
+                        </div>
+
+                    </div>
+                    <div class="col-md-9 mb-3">
+                        <button mat-button (click)="registerAfterOtp()" class="btn button-primary w-100"
+                            [disabled]="verificationForm.invalid">
+
+                            <span> {{staticTranslation['send']}}</span>
+
+                        </button>
+                    </div>
+                   
+                    <div class="col-md-9 mb-3"   >
+                        <div class="d-flex justify-content-center font-15 font-weight-medium" >
+                              
+                            <span class="text-color-black">{{staticTranslation['verifyCodeInfo']}}</span>
+                            <a  (click)="resendOtpCode()" class="text-color-blue mx-1"> {{staticTranslation['ClickHere']}}! </a>
+                            {{staticTranslation['toSend']}} {{staticTranslation['again']}}
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+           
+        </div>
+    </div>
+  
+</div>

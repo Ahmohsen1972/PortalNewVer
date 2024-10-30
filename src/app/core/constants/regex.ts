@@ -1,0 +1,15 @@
+export const REGEX = {
+  username: '^[a-zA-Z0-9_.-]*$',
+  name: '^[\u0600-\u065F\u066A-\u06EF\u06FA-\u06FFa-zA-Z]+[\u0600-\u065F\u066A-\u06EF\u06FA-\u06FFa-zA-Z-_ ]*$',
+  email: '^[a-zA-Z0-9]+(.[_a-z0-9]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,15})$',
+  password: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$',
+  number: '^[0-9]+$',
+  minLength: 8,
+  maxLength: 200,
+  script: '/<script\b[^>]*>([sS]*?)</script>/gm',
+  phone: '^[0-9]{9}$',
+  fullPhone: '^966[0-9]{9}$',
+  time: '^(0[0-9]|1[0-1]):[0-5][0-9] ([AP][M])$',
+  patternName: '^[\u0621-\u064A\u0660-\u0669a-zA-Z]+$',
+  passportNumber: '^[a-zA-Z0-9]*$',
+};

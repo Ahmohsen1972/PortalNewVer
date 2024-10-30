@@ -1,0 +1,108 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+    <h2 class="font-33 font-md-24 font-weight-bold text-color-black">Vacations Setup</h2>
+</div>
+
+<form [formGroup]="vacationsForm">
+    <div class="p-3">
+        <div class="row">
+
+            <mat-dialog-content class="h-100 border-top pt-3">
+                <div class="col-12 mb-2">
+                    <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Code</label>
+                    <mat-form-field class="primary-form font-17">
+                        <mat-label>Code</mat-label>
+                        <label class="mat-form-content">
+                            <input type="text" matInput placeholder="Code" formControlName="vamCode" />
+                        </label>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 mb-2">
+                    <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Name</label>
+                    <mat-form-field class="primary-form font-17">
+                        <mat-label>Name</mat-label>
+                        <label class="mat-form-content">
+                            <input type="text" matInput placeholder="Name" formControlName="vamLocalName" />
+                        </label>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 mb-2">
+                    <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Fiscal Year</label>
+
+                    <mat-form-field class="primary-form font-17">
+                        <mat-label>Fiscal Year</mat-label>
+                        <label class="mat-form-content">
+                            <input type="text" matInput placeholder="Fiscal Year" formControlName="vamFisicalYear" />
+                        </label>
+                    </mat-form-field>
+
+                </div>
+
+                <div class="col-12 mb-2">
+                    <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center ">Foreign Name</label>
+                    <mat-form-field class="primary-form font-17">
+                        <mat-label>Foreign Name</mat-label>
+                        <label class="mat-form-content">
+                            <input type="text" matInput placeholder="Foreign Name" formControlName="vamForeignName" />
+                        </label>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 mb-2">
+                    <mat-form-field class="primary-form font-17">
+                        <mat-label>From Date</mat-label>
+                        <label class="mat-form-content">
+                            <input matInput [matDatepicker]="picker" (dateChange)="getDateAndControlName('vamFromDate')"
+                                formControlName="vamFromDate">
+
+                        </label>
+                        <mat-datepicker-toggle matSuffix [for]="picker">
+                            <i class="fi fi-calendar text-color-blue font-18" matDatepickerToggleIcon></i>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 mb-2">
+                    <mat-form-field class="primary-form font-17">
+                        <mat-label>To Date</mat-label>
+                        <label class="mat-form-content">
+                            <input matInput [matDatepicker]="picker2"
+                                [min]="getMinDate(vacationsForm.get('vamFromDate').value)"
+                                (dateChange)="getDateAndControlName('vamToDate')" formControlName="vamToDate">
+
+                        </label>
+                        <mat-datepicker-toggle matSuffix [for]="picker2">
+                            <i class="fi fi-calendar text-color-blue font-18" matDatepickerToggleIcon></i>
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+            </mat-dialog-content>
+
+        </div>
+
+
+
+    </div>
+
+
+</form>
+
+
+<div class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+    <button (click)="resetForm()" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3"
+        matDialogClose>
+        <span>Dismiss</span>
+    </button>
+    <span class="mx-2"></span>
+    <button (click)="onSubmit()" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+        <span>
+            {{btnAction}}
+        </span>
+    </button>
+</div>
+
+<!-- </div> -->

@@ -1,0 +1,68 @@
+<div class="popup-container">
+    <div class="d-flex align-items-center justify-content-end" mat-dialog-title>
+      <button class="mat-close-modal" matDialogClose>
+        <i class="fi fi-close font-18"></i>
+      </button>
+    </div>
+  
+  
+    <mat-dialog-content>
+      <div class="custom-container">
+        <div class="my-8">
+          <div class="d-block d-md-none mt-3">
+            <mat-form-field class="primary-form blue-input font-17">
+              <mat-label>User</mat-label>
+              <label class="mat-form-content">
+                <mat-select [(ngModel)]="chosenStep" (ngModelChange)="gotoStep()">
+                  <mat-option value="0">User</mat-option>
+                  <mat-option value="1">User Roles</mat-option>                 
+                </mat-select>
+              </label>
+            </mat-form-field>
+          </div>
+  
+  
+          <div class="row">
+            <div class="col-md-3 d-none d-md-flex">
+              <mat-tab-group #tabGroup (selectedIndexChange)="onTabChanged($event)" class="vertical-tab w-100">
+                <mat-tab>
+                  <div *matTabLabel>
+                   User
+                  </div>
+                </mat-tab>
+                <mat-tab>
+                  <div *matTabLabel>
+                    User Roles
+                  </div>
+                </mat-tab>
+               
+              </mat-tab-group>
+            </div>
+  
+            <div class="col-md-9">
+  
+              <div *ngIf="tabIndex===0">
+                <div *ngIf="status=='view'">
+                  <app-user-information [status]="status" [row]="row"></app-user-information>
+                </div>               
+            </div>
+              <div *ngIf="tabIndex===1">
+                <app-user-roles [status]="status" [row]="row"></app-user-roles>
+              </div> 
+              
+            </div>
+            </div>
+          </div>
+        </div>
+     
+    </mat-dialog-content>
+  
+  
+    <div class="d-flex align-items-center justify-content-center" mat-dialog-actions *ngIf="status == 'view'">
+      <button class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+        <span>Ok</span>
+      </button>
+    </div>
+  </div>
+
+

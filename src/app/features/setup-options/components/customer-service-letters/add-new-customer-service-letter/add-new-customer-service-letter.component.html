@@ -1,0 +1,50 @@
+<form [formGroup]="customerServiceLetterForm" (ngSubmit)="onSubmit()" *ngIf="pageLoad">
+
+    <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+      <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">{{staticTranslation['CustomerServiceLetters']}}</h3>
+      <button class="mat-close-modal" matDialogClose>
+        <i class="fi fi-close font-18"></i>
+      </button>
+    </div>
+    
+    <mat-dialog-content class="h-100 border-top pt-3">
+      <div class="col-12 mb-4" *ngIf="probertyData['cslCode']['apsVisible'] == 'T'">
+        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['cslCode']['ahdCaption']}}</label>
+        <mat-form-field class="primary-form font-17">
+          <mat-label>{{probertyData['cslCode']['ahdCaption']}}</mat-label>
+          <label class="mat-form-content">
+            <input matInput placeholder="{{probertyData['cslCode']['ahdCaption']}}" formControlName="cslCode">
+          </label>
+        </mat-form-field>
+      </div>
+    
+      <div class="col-12 mb-4" *ngIf="probertyData['cslLocalName']['apsVisible'] == 'T'">
+        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['cslLocalName']['ahdCaption']}}</label>
+        <mat-form-field class="primary-form font-17">
+          <mat-label>{{probertyData['cslLocalName']['ahdCaption']}}</mat-label>
+          <label class="mat-form-content">
+            <input matInput placeholder="{{probertyData['cslLocalName']['ahdCaption']}}" formControlName="cslLocalName">
+          </label>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 mb-3" *ngIf="probertyData['active']['apsVisible'] == 'T'">
+        <mat-checkbox [(ngModel)]="active"  [disabled] = "probertyData['active']['apsEnabled']=='F'"
+        [required] = "probertyData['active']['apsRequired']" [ngModelOptions]="{standalone: true}" ><span class="font-17 font-weight-semi-bold text-color-black">{{probertyData['active']['ahdCaption']}}</span></mat-checkbox>
+      </div>
+    
+    
+    </mat-dialog-content>
+    
+    <div class="d-flex align-items-center justify-content-center">
+      <button type="button" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+        <span>{{staticTranslation['cancel']}}</span>
+      </button>
+      <span class="mx-2"></span>
+      <button type="submit" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose [disabled]="!customerServiceLetterForm.valid">
+        <span>
+            {{staticTranslation['save']}}
+        </span>
+      </button>
+    </div>
+    </form>

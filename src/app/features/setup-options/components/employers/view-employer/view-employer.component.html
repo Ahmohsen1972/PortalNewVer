@@ -1,0 +1,40 @@
+<div class="d-flex align-items-center justify-content-end" mat-dialog-title>
+  <button class="mat-close-modal" matDialogClose>
+    <i class="fi fi-close font-18"></i>
+  </button>
+</div>
+
+<mat-dialog-content class="h-100 border-0 pt-0 mt-n5" *ngIf="pageLoad">
+  <div class="px-md-4">
+    <div
+      class="user-info d-flex flex-column flex-md-row justify-content-md-start justify-content-center align-items-center flex-wrap mb-4">
+      <button class="btn button-primary font-18 font-weight-semi-bold px-2" (click)="addEmployer()" *ngIf="false">
+        <span>
+          <i class="fi fi-pen"></i>
+          {{staticTranslation['EditInformation']}}
+        </span>
+      </button>
+    </div>
+    <div class="info-section reverse">
+      <div class="info-item" *ngIf="probertyData['weCode']['apsVisible'] == 'T'">
+        <span class="name">{{probertyData['weCode']['ahdCaption']}}</span>
+        <span class="disc">{{employerData.weCode}}</span>
+      </div>
+      <!-- <div class="info-item">
+          <span class="name">Finance Concept</span>
+          <span class="disc">
+            <span class="badge medium status bg-color-blue-opacity">New</span>
+          </span>
+        </div> -->
+      <div class="info-item" *ngIf="probertyData['weLocalName']['apsVisible'] == 'T'">
+        <span class="name">{{probertyData['weLocalName']['ahdCaption']}}</span>
+        <span class="disc">{{employerData.weLocalName}} </span>
+      </div>
+      <div class="info-item" *ngIf="probertyData['weForeignName']['apsVisible'] == 'T'">
+        <span class="name">{{probertyData['weForeignName']['ahdCaption']}}</span>
+        <span class="disc">{{employerData.weForeignName}}</span>
+      </div>
+
+    </div>
+  </div>
+</mat-dialog-content>

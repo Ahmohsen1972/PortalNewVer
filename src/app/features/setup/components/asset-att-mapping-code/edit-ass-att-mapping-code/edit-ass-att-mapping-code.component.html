@@ -1,0 +1,76 @@
+<form [formGroup]="AssAttMappCodeForm" (ngSubmit)="onSubmit()" *ngIf="pageLoad">
+    <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+      <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">Asset Attributes Mapping Code</h3>
+      <button class="mat-close-modal" matDialogClose>
+        <i class="fi fi-close font-18"></i>
+      </button>
+    </div>
+  
+    <mat-dialog-content class="h-100 border-top pt-3">
+      
+        <div class="col-12 mb-4">
+            <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Integration Code</label>
+            <mat-form-field class="primary-form font-17">
+              <mat-label>Integration Code</mat-label>
+              <label class="mat-form-content">
+                <input type="text" matInput placeholder="Integration Code" formControlName="acaIntegrationCode" />
+              </label>
+            </mat-form-field>
+          </div>
+  
+      <div class="col-12 mb-4">
+        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Asset Class Name</label>
+        <mat-form-field class="primary-form font-17">
+          <mat-label>Asset Class Name</mat-label>
+          <label class="mat-form-content">
+            <input  [disabled]="true" type="text" matInput placeholder="Asset Class Name" formControlName="assetClassName" />
+          </label>
+        </mat-form-field>
+      </div>
+  
+  
+      <div class="col-12 mb-4">
+        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Attribute Name</label>
+        <mat-form-field class="primary-form font-17">
+          <mat-label>Attribute Name</mat-label>
+          <label class="mat-form-content">
+            <input  [disabled]=true  type="text" matInput placeholder="Attribute Name" formControlName="atributeName" />
+          </label>
+        </mat-form-field>
+      </div>
+
+    
+
+      <div class="col-12 mb-4">
+        <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Order</label>
+        <mat-form-field class="primary-form font-17">
+          <mat-label>Order</mat-label>
+          <label class="mat-form-content">
+            <input [disabled]=true type="text" matInput placeholder="Attribute Name" formControlName="acaDisplayOrder" />
+          </label>
+        </mat-form-field>
+      </div>
+
+      
+    
+  
+    
+  
+  
+     
+    </mat-dialog-content>
+    
+  
+    <div class="d-flex align-items-center justify-content-center">
+      <button type="button" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+        <span>Dismiss</span>
+      </button>
+      <span class="mx-2"></span>
+      <button type="submit" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3"[class.disabled]="isDisabled">
+        <span>
+          {{btnAction}}
+        </span>
+      </button>
+    </div>
+    
+  </form>

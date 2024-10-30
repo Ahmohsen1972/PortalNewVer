@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+  <h2 class="font-33 font-md-24 font-weight-bold text-color-black">Finance Products information</h2>
+  <!-- <button class="btn button-primary px-3 font-17 font-weight-md-medium" (click)="addNew()" *ngIf="status != 'view'">
+      <span>Add Address</span>
+    </button> -->
+</div>
+
+<div class="info-section reverse" *ngIf="pageLoad">
+
+  <div class="info-item">
+    <span class="name">Local Name</span>
+    <span class="disc">{{financeProduct?.fnpLName}} </span>
+  </div>
+
+  <div class="info-item">
+    <span class="name">Other Name</span>
+    <span class="disc">{{financeProduct?.fnpFName}} </span>
+  </div>
+  <div class="info-item">
+    <span class="name">Description</span>
+    <span class="disc">{{financeProduct?.fnpDescription}} </span>
+  </div>
+
+
+  <div class="info-item">
+    <span class="name">Local Terms Conditions</span>
+    <span class="disc">
+      <div [innerHTML]="financeProduct?.fnpLTermsConditions"></div>
+    </span>
+  </div>
+
+  <div class="info-item">
+    <span class="name">Other Terms Conditions </span>
+    <span class="disc">
+      <div [innerHTML]="financeProduct?.fnpFTermsConditions"></div>
+    </span>
+  </div>
+
+
+  <div class="info-item">
+    <span class="name">Local Required Docuemnts</span>
+    <span class="disc">
+      <div [innerHTML]="financeProduct?.fnpLRequiredDocuemnts"></div>
+    </span>
+  </div>
+
+  <div class="info-item">
+    <span class="name">Other Required Docuemnts</span>
+    <span class="disc">
+      <div [innerHTML]="financeProduct?.fnpFRequiredDocuemnts"></div>
+    </span>
+  </div>
+
+  <div class="info-item">
+    <span class="name">Icon Path </span>
+    <span class="disc">{{financeProduct?.fnpIconPath}} </span>
+  </div>
+
+
+
+
+</div>

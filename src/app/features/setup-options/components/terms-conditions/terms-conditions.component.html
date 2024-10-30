@@ -1,0 +1,50 @@
+<div class="main-popup" *ngIf="pageLoad">
+  <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+    <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">{{mainTitle}}</h3>
+    <button class="mat-close-modal" (click)="closePopup()">
+      <i class="fi fi-close font-18"></i>
+    </button>
+  </div>
+  <form [formGroup]="termConditionForm" (ngSubmit)="updateTermsAndConditions()">
+    <mat-dialog-content>
+      <div class="px-md-4 mb-4" *ngIf="probertyData['wtcLocalName']['apsVisible'] == 'T'">
+        <label
+          class="font-17 font-weight-medium text-color-dark-gray mb-2">{{probertyData['wtcLocalName']['ahdCaption']}}</label>
+        <quill-editor formControlName="localName"></quill-editor>
+        <br />
+        <div *ngIf="termConditionForm.controls['localName'].errors &&
+                    termConditionForm.controls['localName'].errors['required'] && 
+                    termConditionForm.controls['localName'].touched" class="text-danger">
+          {{probertyData['wtcLocalName']['ahdCaption']}} {{staticTranslation['isRequired']}}.
+        </div>
+        <br />
+      </div>
+      <div class="px-md-4 mb-4" *ngIf="probertyData['wtcForeignName']['apsVisible'] == 'T'">
+        <label
+          class="font-17 font-weight-medium text-color-dark-gray mb-2">{{probertyData['wtcForeignName']['ahdCaption']}}</label>
+        <quill-editor formControlName="foreignName"></quill-editor>
+        <br />
+        <div *ngIf="termConditionForm.controls['foreignName'].errors &&
+              termConditionForm.controls['foreignName'].errors['required'] && 
+              termConditionForm.controls['foreignName'].touched" class="text-danger">
+          {{probertyData['wtcForeignName']['ahdCaption']}} {{staticTranslation['isRequired']}}.
+        </div>
+      </div>
+
+    </mat-dialog-content>
+
+    <div class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+      <button class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" (click)="closePopup()"
+        type="button">
+        <span> {{staticTranslation['dismiss']}}</span>
+      </button>
+      <span class="mx-2"></span>
+      <button class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3" type="submit"
+        [disabled]="termConditionForm.invalid">
+        <span>
+          {{staticTranslation['save']}}
+        </span>
+      </button>
+    </div>
+  </form>
+</div>

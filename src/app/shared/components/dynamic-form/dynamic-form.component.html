@@ -1,0 +1,64 @@
+<div>
+    <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{caption}}
+    </label>
+
+
+    <mat-form-field class="primary-form font-17" *ngIf="controlType=='TF' && dataType!='Z' ">
+        <label class="mat-form-content">
+            <input [required]="required" #textField [disabled]="fDisable" type="dataType=='C'?'text':'number'"
+                (change)="setValue()" [(ngModel)]="controlValue" matInput placeholder="{{caption}}" />
+
+        </label>
+    </mat-form-field>
+
+
+    <mat-form-field class="primary-form font-17" *ngIf="controlType=='TF'&& dataType=='Z'">
+        <mat-label>{{caption}}</mat-label>
+        <label class="mat-form-content">
+            <input [required]="required" #date [disabled]="fDisable" matInput [matDatepicker]="picker"
+                (dateChange)="setValue()" [(ngModel)]="controlValue">
+
+        </label>
+        <mat-datepicker-toggle matSuffix [for]="picker">
+            <i class="fi fi-calendar text-color-blue font-18" matDatepickerToggleIcon></i>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+    <!-- <mat-form-field class="primary-form font-17" *ngIf="controlType=='D'&& dataType !='Z' ">
+        <mat-label>{{caption}}</mat-label>
+        <label class="mat-form-content">
+            <mat-select (focus)="callLovServices(variableName,lovKey,ilmKey)" [(ngModel)]="controlValue"
+                [disabled]="fDisable" [required]="required" #dropList>
+                <mat-option *ngFor="let data of dataSource" (click)="setValue()" [value]=data.code>
+                    {{data.local_name}}
+                </mat-option>
+            </mat-select>
+
+        </label>
+
+    </mat-form-field> -->
+
+
+    
+        <mat-form-field *ngIf="controlType=='D'&& dataType !='Z' "class="primary-form font-17">
+            <mat-label>{{caption}}</mat-label>
+            <mat-icon matPrefix><i class="fi fi-search"></i> </mat-icon> 
+            <label class="mat-form-content">
+                <input type="text" placeholder="{{caption}}" matInput
+                (change)="validateValue($event)"
+                [disabled]="fDisable" [required]="required" #dropList
+                [matAutocomplete]="auto" [(ngModel)]="controlValue" (focus) = "callLovServices(variableName,lovKey,ilmKey)" >
+            </label>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="setValue2($event)">
+                <mat-option *ngFor="let data of dataSource" [value]=data.local_name>
+
+                    {{data.local_name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    
+
+
+</div>

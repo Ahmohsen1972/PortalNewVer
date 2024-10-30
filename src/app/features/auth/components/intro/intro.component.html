@@ -1,0 +1,20 @@
+<div class="login-section" background-color="red" *ngIf="pageLoad" >
+    <div  class="login-illustration" >
+      
+    </div>
+    <div class="login-form flex-grow-1">
+      <div class="d-flex justify-content-end">
+        <button class="square-btn gray-btn font-20" *ngIf="currentLang === 'EN'" (click)="changeLang('AR'); onChangeLanguage('AR')">
+          <span>ع</span>
+        </button>
+              <button class="square-btn gray-btn font-20" *ngIf="currentLang === 'AR'" (click)="changeLang('EN'); onChangeLanguage('EN')">
+          <span>EN</span>
+        </button>
+      </div>
+      <div class="d-lg-none d-flex my-3 px-md-5 mx-md-5">
+        <img src="assets/images/green-logo.svg" alt="">
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  

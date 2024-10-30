@@ -1,0 +1,93 @@
+<div class="popup-container" *ngIf="pageLoad">
+    <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+      <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">{{dataStatus.action === 'create'? 'Add':'Edit'}} Required
+        Document </h3>
+      <button class="mat-close-modal" matDialogClose>
+        <i class="fi fi-close font-18"></i>
+      </button>
+    </div>
+  
+    <mat-dialog-content>
+  
+  
+      <div class="p-3">
+        <form [formGroup]="RequiredDocumentForm">
+          <div class="row">
+  
+            <div class="col-12 mb-3">
+              <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Word Local Name</label>
+              <mat-form-field class="primary-form font-17">
+                <mat-label>Word Local Name</mat-label>
+                <label class="mat-form-content">
+                  <mat-select formControlName="wrdKey" >
+                    <mat-option *ngFor="let gender of requiredDoc" 
+                      [value]="gender.wrdKey">
+                      {{gender.wrdLocalName}}
+                    </mat-option>
+                  </mat-select>
+                </label>
+              </mat-form-field>
+            </div>
+  
+  
+          
+  
+  
+            <div class="col-12 mb-3">
+              <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Nationality</label>
+              <mat-form-field class="primary-form font-17">
+                <mat-label>Nationality</mat-label>
+                <label class="mat-form-content">
+                  <mat-select formControlName="fcprdNationalityStatus" >
+                    <mat-option *ngFor="let gender of nationalityStatus" [value]="gender.rvLowValue">
+                      {{gender.rvMeaning}}
+                    </mat-option>
+                  </mat-select>
+                </label>
+              </mat-form-field>
+            </div>
+
+
+            <div class="col-12 mb-3">
+                <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Letter Name</label>
+                <mat-form-field class="primary-form font-17">
+                  <mat-label>Letter Name</mat-label>
+                  <label class="mat-form-content">
+                    <mat-select formControlName="cslKey" >
+                      <mat-option *ngFor="let csl of cslLovData" [value]="csl.code">
+                        {{csl.localName}}
+                      </mat-option>
+                    </mat-select>
+                  </label>
+                </mat-form-field>
+              </div>
+    
+  
+  
+          
+  
+  
+  
+          </div>
+        </form>
+  
+      </div>
+  
+    </mat-dialog-content>
+  
+    <div class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+      <button class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+        <span> Dismiss </span>
+      </button>
+      <span class="mx-2"></span>
+  
+      <button (click)="onSubmitRequiredDocument()" [disabled]="RequiredDocumentForm.invalid"
+        class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+        <span>
+          {{btnAction}}
+  
+        </span>
+      </button>
+    </div>
+  
+  </div>

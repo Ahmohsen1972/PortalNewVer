@@ -1,0 +1,72 @@
+<form [formGroup]="bankForm" (ngSubmit)="onSubmit()" *ngIf="pageLoad">
+
+  <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+    <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">Add bank</h3>
+    <button class="mat-close-modal" matDialogClose>
+      <i class="fi fi-close font-18"></i>
+    </button>
+  </div>
+
+  <mat-dialog-content class="h-100 border-top pt-3">
+    <div class="col-12 mb-4" *ngIf="probertyData['wbCode']['apsVisible'] == 'T'">
+      <label
+        class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wbCode']['ahdCaption']}}</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{probertyData['wbCode']['ahdCaption']}}</mat-label>
+        <label class="mat-form-content">
+          <input matInput placeholder="{{probertyData['wbCode']['ahdCaption']}}" formControlName="bankCode">
+        </label>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 mb-4" *ngIf="probertyData['wbLocalName']['apsVisible'] == 'T'">
+      <label
+        class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wbLocalName']['ahdCaption']}}</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{probertyData['wbLocalName']['ahdCaption']}}</mat-label>
+        <label class="mat-form-content">
+          <input matInput placeholder="{{probertyData['wbLocalName']['ahdCaption']}}" formControlName="bankLocalName">
+        </label>
+      </mat-form-field>
+    </div>
+    <div class="col-12 mb-4" *ngIf="probertyData['wbForeignName']['apsVisible'] == 'T'">
+      <label
+        class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['wbForeignName']['ahdCaption']}}</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{probertyData['wbForeignName']['ahdCaption']}}</mat-label>
+        <label class="mat-form-content">
+          <input matInput placeholder="{{probertyData['wbForeignName']['ahdCaption']}}"
+            formControlName="bankForeignName">
+        </label>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 mb-4" *ngIf="probertyData['sbRefreshDate']['apsVisible'] == 'T'">
+      <label
+        class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">{{probertyData['sbRefreshDate']['ahdCaption']}}</label>
+      <mat-form-field class="primary-form font-17">
+        <mat-label>{{probertyData['sbRefreshDate']['ahdCaption']}}</mat-label>
+        <label class="mat-form-content">
+          <input matInput [matDatepicker]="picker" placeholder="{{probertyData['sbRefreshDate']['ahdCaption']}}"
+            formControlName="RefreshDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </label>
+      </mat-form-field>
+    </div>
+
+  </mat-dialog-content>
+
+  <div class="d-flex align-items-center justify-content-center">
+    <button type="button" class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+      <span>{{staticTranslation['cancel']}}</span>
+    </button>
+    <span class="mx-2"></span>
+    <button type="submit" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose
+      [disabled]="!bankForm.valid">
+      <span>
+        {{staticTranslation['save']}}
+      </span>
+    </button>
+  </div>
+</form>

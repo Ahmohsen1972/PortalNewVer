@@ -1,0 +1,44 @@
+<div class="d-flex align-items-center justify-content-end" mat-dialog-title>
+    <button class="mat-close-modal" matDialogClose>
+        <i class="fi fi-close font-18"></i>
+    </button>
+</div>
+
+<mat-dialog-content class="h-100 border-0 pt-0 mt-n5" *ngIf="pageLoad">
+    <div class="px-md-4">
+        <div class="user-info d-flex flex-column flex-md-row justify-content-md-start justify-content-center align-items-center flex-wrap mb-4"
+            *ngIf=false>
+            <button class="btn button-primary font-18 font-weight-semi-bold px-2">
+                <span>
+                    <i class="fi fi-pen"></i>
+
+                    EditInformation
+                </span>
+            </button>
+        </div>
+
+
+        <div class="info-section reverse">
+            <div class="info-item">
+                <span class="name">Language</span>
+                <span class="disc">{{staticData.langLocalName}}</span>
+            </div>
+
+
+
+
+            <div class="info-item">
+                <span class="name">control name</span>
+                <span class="disc">{{staticData.controlName}}</span>
+            </div>
+
+
+            <div class="info-item">
+                <span class="name">descritption</span>
+                <span class="disc">{{staticData.controlValue}}</span>
+            </div>
+
+
+        </div>
+    </div>
+</mat-dialog-content>

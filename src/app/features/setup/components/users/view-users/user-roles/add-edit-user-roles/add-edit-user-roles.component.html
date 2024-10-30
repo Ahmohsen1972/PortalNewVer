@@ -1,0 +1,46 @@
+<div class="popup-container" *ngIf="pageLoad">
+    <div class="d-flex align-items-center justify-content-between" mat-dialog-title>
+        <h3 class="mb-0 font-22 font-md-20 font-weight-semi-bold">{{btnAction}} User Role
+        </h3>
+        <button class="mat-close-modal" matDialogClose>
+            <i class="fi fi-close font-18"></i>
+        </button>
+    </div>
+
+
+
+
+    <div class="p-3">
+        <form [formGroup]="userRolesForm">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <label class="font-18 text-color-dark-gray mb-2 d-flex align-items-center">Role</label>
+                    <mat-form-field class="primary-form font-17">
+                        <mat-label>{{data.status=='create'?'role':userRolesData.rolLocalName}}</mat-label>
+                        <label class="mat-form-content">
+                            <mat-select formControlName="rolKey">
+                                <mat-option *ngFor="let data of rolesLovData" [value]=data.Code>{{data.Name}}
+                                </mat-option>
+                            </mat-select>
+                        </label>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <div class="d-flex align-items-center justify-content-center" mat-dialog-actions>
+        <button class="btn button-secondary font-17 font-weight-medium mb-0 px-1 px-md-3" matDialogClose>
+            <span>Dismiss</span>
+        </button>
+        <span class="mx-2"></span>
+        <button (click)="onSubmit()" class="btn button-primary font-17 font-weight-medium mb-0 px-1 px-md-3">
+            <span>
+                {{btnAction}}
+            </span>
+        </button>
+    </div>
+
+</div>

@@ -1,0 +1,145 @@
+<div class="d-flex flex-column" *ngIf="pageLoad&&!isLogged">
+    <app-board-header></app-board-header>
+</div>
+<!-- <main class="flex-grow-1"> -->
+<div [ngClass]="{'dialog-container':requestStatus == 'create','container':requestStatus != 'create'}" *ngIf="pageLoad">
+    
+        <div class="mb-2">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="font-22 font-md-24 font-weight-bold text-color-black mb-0">
+                    {{staticTranslation['financialProducts']}}</h1>
+                <button *ngIf="requestStatus == 'create'" class="mat-close-modal" matDialogClose>
+                    <i class="fi fi-close font-18"></i>
+                </button>
+            </div>
+            <h4 class="font-14 font-weight-medium text-color-gray mb-4">{{staticTranslation['chooseProduct']}}</h4>
+
+            <div class="program-calc">
+                <div class="p-4">
+                    <h1 class="font-22 font-md-24 font-weight-bold text-color-white mb-2">
+                        {{staticTranslation['installmentCalculator']}}
+                        {{' ' +productName==null||productName==undefined?'':'“'+productName+'”'}}</h1>
+                    <div class="row align-items-end">
+                        <div class="col-lg-3 col-md-5 col-12 mb-3">
+                            <label
+                                class="font-18 text-color-white mb-2 d-flex align-items-center">{{staticTranslation['requestedAmount']}}</label>
+                            <mat-form-field class="primary-form font-17">
+                                <mat-label>{{staticTranslation['requestedAmount']}}</mat-label>
+                                <label class="mat-form-content">
+                                    <input matInput placeholder="{{staticTranslation['requestedAmount']}}" #reqAmnt (ngModelChange)="validateRequestedAmount(reqAmnt.value)"
+                                    type="number" id="request-amount" (click)="disablingArrowa('request-amount')"
+                                    [(ngModel)]="requestedAmount">
+                                </label>
+                                <span class="d-flex align-items-center text-color-gray" matsuffix></span>
+                            </mat-form-field>                           
+                        </div>
+                        <div class="col-lg-3 col-md-7 col-12 mb-3">
+                            <label
+                                class="font-18 text-color-white mb-2 d-flex align-items-center">{{staticTranslation['monthlyInsatllment']}}</label>
+                            <mat-form-field class="primary-form font-17">
+                                <mat-label>{{staticTranslation['monthlyInsatllment']}}</mat-label>
+                                <label class="mat-form-content">
+                                    <input matInput placeholder="{{staticTranslation['monthlyInsatllment']}}" #monthInst (ngModelChange)="validateInstallemntNo(monthInst.value)"
+                                    type="number"  id="month-installment" (click)="disablingArrowa('month-installment')" 
+                                    [(ngModel)]="monthlyInsatllment">
+                                </label>
+                                <span class="d-flex align-items-center text-color-gray"
+                                    matsuffix>{{staticTranslation['month']}}</span>
+                            </mat-form-field>                          
+                        </div>
+                        <div *ngIf="downPaymentFlag" class="col-lg-3 col-md-5 col-12 mb-3">
+                            <label
+                                class="font-18 text-color-white mb-2 d-flex align-items-center">{{staticTranslation['downPayment']}}</label>
+                            <mat-form-field class="primary-form font-17">
+                                <mat-label>{{staticTranslation['downPayment']}}</mat-label>
+                                <label class="mat-form-content">
+                                    <input matInput placeholder="{{staticTranslation['downPayment']}}" #dwnPmnt (ngModelChange)="validateDownPayment(dwnPmnt.value)"
+                                     type="number" id="down-payment" (click)="disablingArrowa('down-payment')"
+                                    [(ngModel)]="downPayment">
+                                </label>
+                                <span class="d-flex align-items-center text-color-gray" matsuffix>%</span>
+                            </mat-form-field>                           
+                        </div>
+                        <div *ngIf="!downPaymentFlag" class="col-lg-3 col-md-5 col-12 mb-3">
+                                                    
+                        </div>
+                       
+                        <div class="col-lg-3 col-md-7 col-12 mb-3 d-flex align-items-end">
+                            <button class="btn button-green calc-btn w-100 mb-4 font-19 font-weight-bold"
+                                (click)="generateGenericOffer()"[disabled]="requestedAmountErrFalg||downPaymentErrFalg||numOfInstallmentsErrFlag">
+                                <span>{{staticTranslation['calculate']}}</span>
+                            </button>                           
+                        </div>
+                        <div class="text-color-white m-4">
+                            <p *ngIf="requestedAmountErrFalg">{{requestedAmountValidationMSG}}</p> 
+                           
+                            <p *ngIf="downPaymentErrFalg">{{downPaymentValidationMSG}}</p> 
+                            
+                            <p *ngIf="numOfInstallmentsErrFlag">{{numOfInstallmentsValidationMSG}}</p> 
+                               
+                          </div>
+                          <br>
+                    </div>
+
+
+                    <div class="row align-items-center">
+                        <div class="col-lg-9">
+
+
+                            <div class="program-calc-info mb-2">
+                                <div class="info d-flex flex-column justify-content-center">
+                                    <span
+                                        class="font-18 font-weight-bold text-color-iron">{{staticTranslation['totalAmount']}}</span>
+                                    <span
+                                        class="font-20 font-weight-medium text-color-white">{{genericOffer?.financedAmount}}
+                                        <span class="mx-2 font-20"></span></span>
+                                </div>
+
+                                <div class="devider"></div>
+
+                                <div class="info d-flex flex-column justify-content-center">
+                                    <span
+                                        class="font-18 font-weight-bold text-color-iron">{{staticTranslation['installmentAmount
+                                        ']}}</span>
+                                    <span
+                                        class="font-20 font-weight-medium text-color-white">{{genericOffer?.installmentAmount}}
+                                        <span class="mx-2 font-20"></span></span>
+                                </div>
+
+                                <div class="devider"></div>
+
+                                <div class="info d-flex flex-column justify-content-center">
+                                    <span
+                                        class="font-18 font-weight-bold text-color-iron">{{staticTranslation['profitRate']}}</span>
+                                    <span class="font-20 font-weight-medium text-color-white">{{profitRate}}%</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col d-flex flex-column flex-md-row justify-content-center align-items-center">
+                            <button class="btn button-green calc-btn w-100" (click)="goSignUp()" *ngIf="!isLogged"
+                            [disabled]="requestedAmountErrFalg||downPaymentErrFalg||numOfInstallmentsErrFlag">
+                                <span>{{staticTranslation['Signup & Get Finance']}}</span>
+                            </button>
+                            <span *ngIf="!isLogged"
+                                class="font-14 font-weight-medium text-color-white mx-md-4 my-3 my-md-0 w-50">{{staticTranslation['Or
+                                if you already existed user']}}</span>
+                            <button class="btn button-green-outline calc-btn w-100" (click)="goSignIn()"
+                            [disabled]="requestedAmountErrFalg||downPaymentErrFalg||numOfInstallmentsErrFlag">
+                                <span>{{isLogged?staticTranslation['proceed']:staticTranslation['signIn']}}</span>
+                            </button>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    
+</div>
+<!-- </main> -->
+<div *ngIf="pageLoad&&!isLogged">
+    <app-board-footer></app-board-footer>
+</div> 
